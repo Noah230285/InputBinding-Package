@@ -1,0 +1,21 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/TETETETET/com._S.UtilityEssentials/UIToolkit%20Utility/Assets/Editor/USS/UXMLUtility.uss?fileID=7433441132597879392&amp;guid=fd205cf37f1a744449ab5c9dd0d3f975&amp;type=3#UXMLUtility" />
+    <Style src="project://database/Assets/TETETETET/com._S.UtilityEssentials/ScriptableVariables/Assets/UIToolkit/Styles/Cooldown.uss?fileID=7433441132597879392&amp;guid=6101528f943cf4a4e9043d048356af23&amp;type=3#Cooldown" />
+    <ui:VisualElement name="cooldown" style="flex-direction: row; align-items: auto; justify-content: space-between; margin-top: 1px; margin-bottom: 1px;">
+        <ui:VisualElement style="height: 100%; width: 40px; flex-direction: row-reverse; justify-content: space-between; align-items: flex-end;">
+            <ui:Button text="&#10;" display-tooltip-when-elided="true" focusable="false" class="customButton" style="position: relative; margin-bottom: 4px;">
+                <ui:VisualElement style="background-image: url(&quot;project://database/Assets/TETETETET/com._S.UtilityEssentials/ScriptableVariables/Assets/Icons/Pause.png?fileID=2800000&amp;guid=91d24fd6c02bdd346820ff0a08babef7&amp;type=3#Pause&quot;); width: 100%; height: 100px;" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: space-between; align-items: flex-end; width: auto;">
+            <ui:VisualElement style="justify-content: flex-end; align-items: center; flex-grow: 1; flex-shrink: 0;">
+                <ui:Label text="Cooldown Text" display-tooltip-when-elided="true" style="-unity-text-align: upper-center;" />
+                <ui:ProgressBar title="Error" name="interactableProgressBar" low-value="0" high-value="1" style="flex-grow: 1; flex-shrink: 0; flex-direction: column; flex-basis: auto; align-items: stretch; justify-content: center; width: 100%; opacity: 1; border-left-color: rgb(70, 66, 66); border-right-color: rgb(70, 67, 67); border-top-color: rgb(84, 81, 81); border-bottom-color: rgb(51, 51, 51); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; -unity-font-definition: none;">
+                    <ui:Slider picking-mode="Ignore" value="0" high-value="100" style="position: absolute; width: 100%; height: 100%; visibility: visible; opacity: 0.12; display: flex; flex-shrink: 1; flex-grow: 1; flex-basis: 100%; flex-direction: row; flex-wrap: nowrap; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; overflow: hidden;" />
+                </ui:ProgressBar>
+                <uie:FloatField value="0" name="CurrentField" style="position: absolute; left: auto; border-bottom-width: 0; height: 13px; top: 20px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; overflow: visible;" />
+            </ui:VisualElement>
+            <uie:FloatField label="Max" value="0" class="smallField" style="flex-direction: column; align-items: center; justify-content: space-between; opacity: 1; margin-right: 4px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

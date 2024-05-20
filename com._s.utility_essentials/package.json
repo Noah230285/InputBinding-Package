@@ -1,0 +1,17 @@
+{
+  "name": "com._s.utility_essentials",
+  "displayName": "Util Essentials",
+  "version": "1.0.0",
+  "unity": "2021.3",
+  "keywords": [
+    "Input",
+    "Binding",
+    "Bind"
+  ],
+  "description": "A Collection of useful scripts I created",
+  "dependencies": {
+    "com.unity.inputsystem": "1.4.4",
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.addressables": "1.21.20"
+  }
+}

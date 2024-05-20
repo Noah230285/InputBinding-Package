@@ -1,0 +1,16 @@
+{
+    "name": "UtilEssentials.ScriptableVariables.MonoEnablers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:55beff5453b27224995f414c017a6ff6"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

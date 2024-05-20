@@ -1,0 +1,204 @@
+.hidden {
+    display: none;
+}
+
+.bold {
+    -unity-font-style: bold;
+}
+
+.header {
+    -unity-font-style: bold;
+    margin: 4px 0;
+}
+
+.panel {
+    padding: 10px;
+    background-color: rgb(60, 60, 60);
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 5px;
+    border-left-color: rgb(43, 43, 43);
+    border-right-color: rgb(43, 43, 43);
+    border-top-color: rgb(53, 53, 53);
+    border-bottom-color: rgb(34, 34, 34);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.descriptionBox {
+    -unity-text-align: upper-left;
+    min-height: 50px;
+    white-space: normal;
+}
+
+.halfTransparent {
+    opacity: 0.5;
+}
+
+.variableField {
+    flex-shrink: 1;
+    min-width: 20px;
+    flex-grow: 1;
+}
+
+.radial-progress {
+    min-width: 26px;
+    min-height: 20px;
+    --track-color: rgb(130, 130, 130);
+    --progress-color: rgb(46, 132, 24);
+    --percentage-color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    flex-direction: row;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+.customButton {
+    width: 21px;
+    height: 19px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    justify-content: center;
+    -unity-text-align: middle-center;
+    border-left-color: rgb(53, 53, 53);
+    border-right-color: rgb(53, 53, 53);
+    border-top-color: rgb(67, 67, 67);
+    border-bottom-color: rgb(41, 41, 41);
+    align-items: center;
+    color: rgba(210, 210, 210, 0);
+}
+
+.customButton:hover {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgb(94, 94, 94);
+    border-left-color: rgb(56, 56, 56);
+    border-right-color: rgb(56, 56, 56);
+    border-top-color: rgb(70, 70, 70);
+    border-bottom-color: rgb(43, 43, 43);
+}
+
+.customButton:active {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: rgb(82, 82, 82);
+    border-left-color: rgb(44, 44, 44);
+    border-right-color: rgb(44, 44, 44);
+    border-top-color: rgb(56, 56, 56);
+    border-bottom-color: rgb(34, 34, 34);
+}
+
+.customButton VisualElement {
+    width: 11px;
+    height: 20px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.smallField Label {
+    min-width: 0;
+}
+
+.panel {
+    -unity-text-align: upper-left;
+}
+
+.smallField {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.title {
+    -unity-text-align: upper-left;
+    -unity-font-style: bold;
+    font-size: 13px;
+    margin-left: 17px;
+    height: 16px;
+}
+
+.rotate90Anim {
+    transition-duration: 0.25s;
+    rotate: 90deg;
+}
+
+.dropArrow {
+    width: 20px;
+    height: 20px;
+    left: 0;
+    transition-duration: 0.25s;
+    background-image: url('project://database/Assets/TETETETET/com._s.utility_essentials/UIToolkit%20Utility/Assets/Editor/Icons/EditorArrowIcon.png?fileID=2800000&guid=81bde2f5f5313ea4eb0be6ed19ca8237&type=3#EditorArrowIcon');
+}
+
+.readOnly {
+    opacity: 0.7;
+}
+
+.largePanel {
+    background-color: rgb(46, 46, 46);
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-color: rgb(41, 41, 41);
+    border-right-color: rgb(41, 41, 41);
+    border-top-color: rgb(53, 53, 53);
+    border-bottom-color: rgb(29, 29, 29);
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 0;
+}
+
+.label {
+    width: 40%;
+    min-width: 120px;
+}
+
+.alignCenter {
+    justify-content: center;
+}
+
+.smallerLabel Label {
+    min-width: 74px;
+}

@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Utility%20Essentials/UIToolkit%20Utility/Assets/USS/UXMLUtility.uss?fileID=7433441132597879392&amp;guid=fd205cf37f1a744449ab5c9dd0d3f975&amp;type=3#UXMLUtility" />
+    <ui:VisualElement class="panel" style="align-items: stretch; justify-content: center; width: 100%; padding-left: 3px; padding-right: 3px; padding-top: 1px; padding-bottom: 3px; height: auto; overflow: hidden;">
+        <ui:Label text="Title" display-tooltip-when-elided="true" name="Label" class="title" style="flex-direction: row; align-items: center;">
+            <ui:VisualElement class="dropArrow" style="left: -20px; width: 10px; height: 10px; margin-left: 5px;" />
+        </ui:Label>
+        <ui:VisualElement style="margin-left: 3px; margin-right: 4px;">
+            <ui:VisualElement style="height: 1px; width: 95%; position: relative; left: 2.5%; background-color: rgb(38, 38, 38); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 2px; border-bottom-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; margin-bottom: 3px; margin-top: 3px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

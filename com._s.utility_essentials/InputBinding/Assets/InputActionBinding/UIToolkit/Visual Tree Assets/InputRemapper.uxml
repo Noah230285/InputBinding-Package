@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False" class="inputRemapper">
+    <ui:Template name="ButtonWithIcon" src="project://database/Assets/TETETETET/com._S.UtilityEssentials/InputBinding/Assets/InputActionBinding/UIToolkit/Visual%20Tree%20Assets/ButtonWithIcon.uxml?fileID=9197481963319205126&amp;guid=afd97ef3cadd3b8419118dbb1af3037c&amp;type=3#ButtonWithIcon" />
+    <Style src="project://database/Assets/TETETETET/com._S.UtilityEssentials/InputBinding/Assets/InputActionBinding/UIToolkit/USS/Menu%20UI.uss?fileID=7433441132597879392&amp;guid=2c8a993800a89af419046bd542d82b34&amp;type=3#Menu UI" />
+    <ui:VisualElement class="inputRemapper">
+        <ui:Label text="Mapping Function" />
+        <ui:VisualElement>
+            <ui:VisualElement name="ButtonContainer">
+                <ui:Instance template="ButtonWithIcon" name="KeyboardPrimary" class="remappingButton" />
+                <ui:Instance template="ButtonWithIcon" name="KeyboardSecondary" class="remappingButton" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ControllerMapping">
+                <ui:Instance template="ButtonWithIcon" name="Controller" class="remappingButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
