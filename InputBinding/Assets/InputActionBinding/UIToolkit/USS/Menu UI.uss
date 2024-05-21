@@ -14,8 +14,9 @@
 
 .inputRemapper {
     height: 70px;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 5px;
+    flex-grow: 1;
 }
 
 .inputRemapper > Label {
@@ -35,25 +36,20 @@
     font-size: 25px;
 }
 
-.inputRemapper > VisualElement {
+.inputRemapper > .buttonContainer {
     flex-direction: row;
     flex-grow: 1;
 }
 
-.inputRemapper > VisualElement > #ButtonContainer {
+.inputRemapper > .buttonContainer > .keyboardButtonsContainer {
     flex-direction: row;
     flex-grow: 1;
 }
 
-.inputRemapper > VisualElement > #ControllerMapping {
+.inputRemapper > .buttonContainer > .controllerButtonsContainer {
     width: 20%;
     flex-direction: row;
     margin-left: 22px;
-}
-
-.inputRemapper > VisualElement > #ControllerMapping > #ButtonWithIcon {
-    width: 70px;
-    flex-grow: 1;
 }
 
 .remappingButton {
@@ -90,14 +86,14 @@
     align-items: center;
 }
 
-.bindingOverlay {
+#BindingOverlay {
     transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-out;
     opacity: 1;
 }
 
-.bindingOverlay.hidden {
+#BindingOverlay.hidden {
     opacity: 0;
     transition-duration: 0.3s, 0s, 0s;
     transition-property: opacity, display, visibility;

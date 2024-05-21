@@ -563,10 +563,10 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 _inputActionBinders[i].BindUXML(_UIDocument);
             }
 
-            _bindingOverlay = _UIDocument.rootVisualElement.Q(null, "bindingOverlay");
+            _bindingOverlay = _UIDocument.rootVisualElement.Q("BindingOverlay");
             if (_bindingOverlay == null)
             {
-                Debug.LogError($"UI Document {_UIDocument} does not contain element with class 'bindingOverlay'", this);
+                Debug.LogError($"UI Document {_UIDocument} does not contain element with name 'BindingOverlay'", this);
             }
             _topLabel = _bindingOverlay.Q("TopLabel") as Label;
             _bottomLabel = _bindingOverlay.Q("BottomLabel") as Label;

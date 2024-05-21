@@ -524,7 +524,7 @@ namespace UtilEssentials.UIToolkitUtility.Editor
             if (packageInfo == null)
             {
                 loaderAssetPath = loaderAssetPath.Replace('\\', '/');
-
+                
                 packageName = packageName.ReverseString();
                 loaderAssetPath = loaderAssetPath.ReverseString();
 

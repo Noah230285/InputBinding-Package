@@ -18,17 +18,12 @@ MonoBehaviour:
   m_GUID: bcb1973b8d9ae21439dd6b6121af3869
   m_SerializeEntries:
   - m_GUID: 0679fa4813bd50d4aab1b43ff0ac5345
-    m_Address: /InputBinding/Assets/InputActionBinding/UIToolkit/Visual Tree Assets/InputRemapper.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bf43ddfb91126f3478dddbd79c829ef1
-    m_Address: /InputBinding/Assets/InputActionBinding/UIToolkit/Visual Tree Assets/InputRemappingMenu.uxml
+    m_Address: /InputBinding/Assets/InputActionBinding/UIToolkit/VisualTreeAssets/InputRemapper.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ce0624f21ec2c624bb21e62430cdee30
-    m_Address: /InputBinding/Assets/InputActionBinding/UIToolkit/Visual Tree Assets/SubMenu.uxml
+    m_Address: /InputBinding/Assets/InputActionBinding/UIToolkit/VisualTreeAssets/SubMenu.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

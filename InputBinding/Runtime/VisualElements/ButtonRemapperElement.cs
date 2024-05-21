@@ -27,7 +27,7 @@ namespace UtilEssentials.InputActionBinding.UIToolkit
         public void Init()
         {
             // Load the source UXML file
-            (this as IRuntimeElement).LoadAssets("/InputBinding/Assets/InputActionBinding/UIToolkit/Visual Tree Assets/InputRemapper.uxml", "com._s.utility_essentials");
+            (this as IRuntimeElement).LoadAssets("/InputBinding/Assets/InputActionBinding/UIToolkit/VisualTreeAssets/InputRemapper.uxml", "com._s.utility_essentials");
         }
 
         [Preserve]

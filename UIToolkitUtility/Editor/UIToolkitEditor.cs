@@ -21,8 +21,11 @@ namespace UtilEssentials.UIToolkitUtility.Editor
 
             var iterator = serializedObject.GetIterator();
 
-            defaultStyles = AssetDatabase.LoadAssetAtPath<StyleSheet>
-("Packages/com.gameinvader.utility/Assets/Editor/UIToolkit/Styles/Main.uss");
+            string assetPath = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
+            string beginingPath = UIToolkitUtilityFunctions.GetBeginningOfPackagePath(assetPath, "com._s.utility_essentials");
+
+            defaultStyles = AssetDatabase.LoadAssetAtPath<StyleSheet>(
+            $"{beginingPath}/UIToolkit Utility/Editor/USS/UXMLUtility.uss");
             container.styleSheets.Add(defaultStyles);
 
             if (iterator.NextVisible(true))

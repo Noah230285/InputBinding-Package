@@ -25,7 +25,7 @@ namespace UtilEssentials.InputActionBinding.UIToolkit
         public void Init()
         {
             //Load the source UXML file
-           (this as IRuntimeElement).LoadAssets("/InputBinding/Assets/InputActionBinding/UIToolkit/Visual Tree Assets/SubMenu.uxml", "com._s.utility_essentials");
+           (this as IRuntimeElement).LoadAssets("/InputBinding/Assets/InputActionBinding/UIToolkit/VisualTreeAssets/SubMenu.uxml", "com._s.utility_essentials");
         }
 
         [Preserve]

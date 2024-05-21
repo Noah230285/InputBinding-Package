@@ -17,10 +17,10 @@ namespace UtilEssentials.UIToolkitUtility.Editor.VisualElements
             string beginingPath = UIToolkitUtilityFunctions.GetBeginningOfPackagePath(assetPath, "com._s.utility_essentials");
 
             VisualTreeAsset asset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-            $"{beginingPath}/UIToolkit Utility/Assets/Editor/UXML/Section.uxml");
+            $"{beginingPath}/UIToolkitUtility/Assets/Editor/UXML/Section.uxml");
 
             asset.CloneTree(this);
-            this.AddToClassList("panel");
+            //this.AddToClassList("panel");
             //this.ElementAt(0).MergeIntoParent();
 
             label = this.ElementAt(0).ElementAt(0) as Label;
