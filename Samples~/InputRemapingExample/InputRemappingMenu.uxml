@@ -1,0 +1,32 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/TETETETET/com._s.utility_essentials/InputBinding/Assets/InputActionBinding/UIToolkit/USS/Menu%20UI.uss?fileID=7433441132597879392&amp;guid=2c8a993800a89af419046bd542d82b34&amp;type=3#Menu UI" />
+    <ui:VisualElement style="flex-grow: 1; opacity: 1; flex-direction: row; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement style="width: 52%; margin-left: auto; margin-right: auto; background-color: rgb(52, 72, 69); align-items: stretch; flex-direction: column;">
+            <UtilEssentials.UIToolkitUtility.Editor.VisualElements.FocusCompatableScrollView>
+                <UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement title-label="Movement">
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Move Forward" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Move Back" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Move Right" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Move Left" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Jump" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Crouch" />
+                </UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement>
+                <UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement title-label="Combat">
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Primary Fire" />
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Secondary Fire" />
+                </UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement>
+                <UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement title-label="Combat" name="Misc">
+                    <UtilEssentials.InputActionBinding.UIToolkit.ButtonRemapperElement name="Placeholder Name" input-name="Interact" />
+                </UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement>
+            </UtilEssentials.UIToolkitUtility.Editor.VisualElements.FocusCompatableScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="BindingOverlay" class="screenOverlay hidden" style="background-color: rgba(19, 23, 67, 0.44);">
+        <ui:VisualElement style="width: 100%; height: 80%; background-color: rgba(7, 44, 75, 0.46); align-items: center; justify-content: center;">
+            <ui:Label tabindex="-1" text="Rebinding primary input of &apos;Move Forward&apos;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TopLabel" style="font-size: 59px; color: rgb(255, 255, 255);" />
+            <ui:Label tabindex="-1" text="Press any input to register or esc to cancel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BottomLabel" style="font-size: 41px; color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

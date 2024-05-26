@@ -344,6 +344,114 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &439607428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439607432}
+  - component: {fileID: 439607431}
+  - component: {fileID: 439607430}
+  - component: {fileID: 439607429}
+  m_Layer: 0
+  m_Name: UXML (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &439607429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439607428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3807c11acc58d46b917d812ea8cc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputActionBinders:
+  - _inputName: Example
+    _actionReference: {fileID: 117047662763275649, guid: 8801d37db969f854cbe1f83a5713cb20,
+      type: 3}
+    _primary:
+      _actionReference: {fileID: 117047662763275649, guid: 8801d37db969f854cbe1f83a5713cb20,
+        type: 3}
+      _bindingIndex: -1
+      _bindingID: 
+    _secondary:
+      _actionReference: {fileID: 117047662763275649, guid: 8801d37db969f854cbe1f83a5713cb20,
+        type: 3}
+      _bindingIndex: -1
+      _bindingID: 
+    _controller:
+      _actionReference: {fileID: 117047662763275649, guid: 8801d37db969f854cbe1f83a5713cb20,
+        type: 3}
+      _bindingIndex: -1
+      _bindingID: 
+    _sectionExtended: 1
+  _resetBindingActionReference: {fileID: 7961505472738168076, guid: 8801d37db969f854cbe1f83a5713cb20,
+    type: 3}
+  _emptyBindingActionReference: {fileID: -9146708932709288472, guid: 8801d37db969f854cbe1f83a5713cb20,
+    type: 3}
+  _exitBindingPromptActionReference: {fileID: 5982742081587708260, guid: 8801d37db969f854cbe1f83a5713cb20,
+    type: 3}
+  _rebindStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _rebindStopEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &439607430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439607428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c250ab79a1cfb3748bea9e40a5f5aa82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _UIInput: {fileID: 865173552}
+--- !u!114 &439607431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439607428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: a3fcf6afefffa1c469ed3bb62f5e6461, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: bf43ddfb91126f3478dddbd79c829ef1,
+    type: 3}
+  m_SortingOrder: 0
+--- !u!4 &439607432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439607428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5112436, y: 3.2648013, z: 18.06738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &474650756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +849,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 240544c1-6fec-4821-ab6b-2cdcac86485b
     m_ActionName: UI/Scroll[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38854c1d-76c8-44f7-9eee-8bee298bc732
+    m_ActionName: Player/Example
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -777,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: c09a1f0e71ecaf84f9ce0fa30c9f7b88, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: a3fcf6afefffa1c469ed3bb62f5e6461, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: bf43ddfb91126f3478dddbd79c829ef1,
     type: 3}
@@ -877,9 +989,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _rebindStopEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _updateBindingUXMLEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1074104872
@@ -1418,9 +1527,10 @@ RectTransform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 689647329}
-  - {fileID: 373393350}
-  - {fileID: 1074104868}
   - {fileID: 74490506}
-  - {fileID: 865173551}
   - {fileID: 576802488}
+  - {fileID: 373393350}
+  - {fileID: 865173551}
+  - {fileID: 689647329}
+  - {fileID: 1074104868}
+  - {fileID: 439607432}
