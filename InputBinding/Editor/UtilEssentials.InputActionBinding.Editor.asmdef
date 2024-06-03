@@ -3,31 +3,15 @@
     "rootNamespace": "",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:617c29fab7fdc0847b79d5c705bb4898",
         "GUID:1a38a56b312436c4db3b46e8e28d7fa5",
-        "GUID:fbe916ca43ff73e448aaf76ff948a69f"
+        "GUID:fbe916ca43ff73e448aaf76ff948a69f",
+        "GUID:478a2357cc57436488a56e564b08d223",
+        "GUID:157f1be2ec66bd049885e67f7a4392c8"
     ],
-    "includePlatforms": [],
-    "excludePlatforms": [
-        "Android",
-        "EmbeddedLinux",
-        "GameCoreScarlett",
-        "GameCoreXboxOne",
-        "iOS",
-        "LinuxStandalone64",
-        "CloudRendering",
-        "macOSStandalone",
-        "PS4",
-        "PS5",
-        "Stadia",
-        "Switch",
-        "tvOS",
-        "WSA",
-        "WebGL",
-        "WindowsStandalone32",
-        "WindowsStandalone64",
-        "XboxOne"
+    "includePlatforms": [
+        "Editor"
     ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

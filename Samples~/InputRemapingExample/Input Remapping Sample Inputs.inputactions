@@ -69,9 +69,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Example",
+                    "name": "Example1",
                     "type": "Button",
-                    "id": "38854c1d-76c8-44f7-9eee-8bee298bc732",
+                    "id": "82ec2a1a-3f73-4457-ab1a-2c05b61abcd8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -389,12 +389,34 @@
                 },
                 {
                     "name": "",
-                    "id": "4bf53dda-ab83-495f-a884-d8db64a8cabf",
+                    "id": "ee01b101-ea09-41bc-9106-b673fc92fdf6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Example1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df2cc6d1-1961-4a4e-9c9c-46fde229fd84",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Example1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "863429bd-bb71-4cb3-874a-0479b39d311d",
                     "path": "",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Example",
+                    "groups": "Controller",
+                    "action": "Example1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -624,7 +646,7 @@
                     "id": "51422bec-24ff-4e8d-a967-63dcc3147a65",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.5),NormalizeVector2",
                     "groups": "Controller",
                     "action": "Move",
                     "isComposite": false,

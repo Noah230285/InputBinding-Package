@@ -1,9 +1,13 @@
 # Input Binding
 
-There are two primary parts to this package subset. The first is runtime input rebinding via UIToolkit,
-the second is binding input paths to textures to use as representative icons. These bindings occur through
-the new input system, so any project that wants to make use of these features will need to utilise that system
-for their inputs.
+There are two primary parts to this package subset. The first is runtime input rebinding via 
+[**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html), the second is binding
+input paths to textures to use as representative icons. These bindings occur through
+unity's [**new input system**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html),
+so any project that wants to make use of these features will need to utilise that system
+for their inputs. To use this package its highly recommended that you have at least some intermediate knowledge 
+of unity's [**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html) and 
+[**InputSystem**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html) packages.
 
 [**Input Remapping**](#input-remapping)\
 [&emsp;> **1. Initial setup**](#initial-setup)\
@@ -24,7 +28,7 @@ There are three major components to setting up input rebinding.
 as the runtime interface for input rebinding.
 2. The [**InputActionAsset**](https://docs.unity3d.com/Packages/com.unity.inputsystem@0.9/manual/ActionAssets.html) you will
 be using to store your input actions.
-3. The [**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs) MonoBehaviour,
+3. The [**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs) MonoBehaviour,
 which binds the UI to the actions and is essentially the brain of the rebinding.
 <br>
 
@@ -47,7 +51,7 @@ Additionally, container element [**SubMenu**](../InputBinding/Assets/InputAction
 used for easily setting up menus with a header.
 
 If you want to create
-your own UXML asset compatable with [**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs),
+your own UXML asset compatable with [**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs),
 you can follow the instructions [here](#create-new-bindable-uxml-assets). Otherwise, if you want
 to learn how to use and modify the included UXML assets provided, you can find that [here](#using-existing-uxml-assets)
 
@@ -60,12 +64,12 @@ to learn how to use and modify the included UXML assets provided, you can find t
 <img style="float: left;padding-right: 20px" src="InputBinding/UXMLFlowGraph.png">
 
 This accompanied graph shows the hierarchy of Visual elements that is required for the
-[**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs) to find all of the elements for the UI 
+[**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs) to find all of the elements for the UI 
 to be properly bound.
 
 To create a **single input action rebinder** with the three rebindable binding paths, you will need a container
 VisualElement that has a unique **name** (Shown as #EXAMPLENAME),
-which is used by the [**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs)
+which is used by the [**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs)
 to link its sub-buttons to a specific action. This element then needs to contain three children elements with the
 names, **KeyboardPrimary**, **KeyboardSecondary**, **ControllerMapping**. Each of these need to have a 
 [**Button**](https://docs.unity3d.com/Manual/UIE-uxml-element-Button.html) as their **first child**.
@@ -124,10 +128,10 @@ that sub-package can be found here.
 
 If you want to take advantage of the existing [**UXML controls**](https://docs.unity3d.com/Manual/UIE-custom-controls.html)
 and assets, the best way to do it is to create a custom [**USS**](https://docs.unity3d.com/Manual/UIE-about-uss.html)
-asset to decorate them. The [**InputRemapper control**](../InputBinding/Runtime/VisualElements/ButtonRemapperElement.cs)
+asset to decorate them. The [**InputRemapper control**](../InputBinding/Runtime/InputActionBinding/VisualElements/ButtonRemapperElement.cs)
 can be imported into a UXML document, and a USS asset can be added into that container document, overriding the existing
 styles. An example of this can be found below. Additionally if you are using the
-[**InputRemapper control**](../InputBinding/Runtime/VisualElements/ButtonRemapperElement.cs), you can modify the **input name**
+[**InputRemapper control**](../InputBinding/Runtime/InputActionBinding/VisualElements/ButtonRemapperElement.cs), you can modify the **input name**
 variable to change the name of the control, and the text of the label.
 </div>
 
@@ -137,11 +141,11 @@ variable to change the name of the control, and the text of the label.
 <br>
 <br>
 
-## 3. Using [**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs)
+## 3. Using [**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs)
 
 <div style="float: left; width: 100%">
 
-[**UXMLRemappingBinder**](../InputBinding/Runtime/UIDocumentExtensions/UXMLRemmappingBinder.cs) is the monobehaviour that
+[**UXMLRemappingBinder**](../InputBinding/Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs) is the monobehaviour that
 binds the UI its rebinding functionality, as well as having several other utility functions. In order to add this behaviour
 to a Gameobject, you first need to add a [**UIDocument**](https://docs.unity3d.com/ScriptReference/UIElements.UIDocument.html),
 then a **UIDocumentExtender**, a behaviour added to this package. More information about using the **UIDocumentExtender**

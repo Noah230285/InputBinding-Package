@@ -71,14 +71,17 @@
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    padding-top: 4px;
-    padding-right: 4px;
-    padding-bottom: 4px;
-    padding-left: 4px;
-    width: 100%;
-    height: 100%;
-    min-width: 100%;
-    min-height: 100%;
+    padding-top: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
+    padding-left: 10%;
+    width: 333%;
+    height: 333%;
+    -unity-background-scale-mode: scale-to-fit;
+    min-width: 333%;
+    min-height: 333%;
+    max-width: 333%;
+    max-height: 333%;
 }
 
 .buttonIconContainer ObjectField .unity-object-field-display {
@@ -97,6 +100,8 @@
     justify-content: center;
     align-items: center;
     -unity-background-scale-mode: scale-to-fit;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0.72);
+    overflow: visible;
 }
 
 .buttonIconContainer ObjectField .unity-object-field__selector {
@@ -104,16 +109,37 @@
     position: absolute;
     flex-grow: 1;
     width: 100%;
-    height: 100%;
+    height: 123%;
     visibility: visible;
     flex-wrap: nowrap;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 123%;
     left: 0;
     top: 0;
     right: 0;
+    background-color: rgb(41, 41, 41);
+    -unity-background-scale-mode: scale-to-fit;
+    border-top-left-radius: 57px;
+    border-top-right-radius: 57px;
+    border-bottom-right-radius: 57px;
+    border-bottom-left-radius: 57px;
+}
+
+.buttonIconContainer ObjectField Label {
+    display: none;
+}
+
+.buttonIconContainer ObjectField > VisualElement {
+    overflow: visible;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
-    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
 }
 
 #BindSetNameTextField > #unity-text-input {
@@ -147,6 +173,7 @@
     flex-direction: row;
     margin-right: 1px;
     overflow: hidden;
+    transition-duration: 0s;
 }
 
 .bindSetHeader:hover {
@@ -157,6 +184,20 @@
 
 .bindSetHeader.selected {
     background-color: rgb(103, 110, 115);
+}
+
+.bindSetHeader.moveUp {
+    background-color: rgb(103, 110, 115);
+    scale: 1.08 1.08;
+    translate: 4% 0;
+    transition-duration: 0.2s, 0.2s;
+    transition-timing-function: ease-in-sine, ease-in-sine;
+    transition-property: translate, scale;
+}
+
+.bindSetHeader.moving {
+    transition-property: position;
+    transition-duration: 0.2s;
 }
 
 .bindSetIconContainer {
@@ -176,6 +217,26 @@
     flex-direction: row;
     max-width: 60px;
     min-width: 40px;
+}
+
+.bindSetIconContainer:hover {
+    background-color: rgb(84, 84, 84);
+    scale: 1.04 1.04;
+}
+
+#EnumField {
+    opacity: 0;
+    width: 115%;
+    height: 129%;
+    position: absolute;
+    margin-top: -2px;
+    margin-right: -2px;
+    margin-bottom: -2px;
+    margin-left: -2px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
 }
 
 .bindSetBody {
@@ -212,35 +273,12 @@
     display: none;
 }
 
-.buttonSetIconContainer > EnumField > .unity-base-field__input {
-    display: none;
-}
-
-#EnumField {
-    opacity: 0;
-    width: 115%;
-    height: 129%;
-    position: absolute;
-    margin-top: -2px;
-    margin-right: -2px;
-    margin-bottom: -2px;
-    margin-left: -2px;
-    padding-top: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-}
-
 #BodyButton {
     background-color: rgba(0, 0, 0, 0);
 }
 
 #BodyButton:active {
     background-color: rgb(125, 125, 125);
-}
-
-.buttonIconContainer ObjectField Label {
-    display: none;
 }
 
 #BindingSizeSlider #unity-tracker {
@@ -293,4 +331,55 @@
 
 #DeleteButton:hover {
     scale: 1.1 1.1;
+    background-color: rgba(255, 255, 255, 0.11);
+}
+
+#MoveButton {
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: rgba(88, 88, 88, 0);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    min-width: 34px;
+    background-image: url('project://database/Assets/TETETETET/com._s.utility_essentials/InputBinding/Assets/Editor/InputIconBinding/Textures/Move.png?fileID=2800000&guid=c292e30daa50d46488396148b921f49e&type=3#Move');
+}
+
+#MoveButton:hover {
+    background-color: rgba(255, 255, 255, 0.11);
+    scale: 1.03 1.03;
+}
+
+.menuProperty {
+    flex-direction: column;
+}
+
+.menuProperty > .unity-label {
+    width: 13px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.menuProperty > VisualElement {
+    width: auto;
+    margin-right: 20%;
+}
+
+.selectableText > .unity-base-text-field__input {
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
 }

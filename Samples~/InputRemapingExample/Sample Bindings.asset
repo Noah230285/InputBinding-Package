@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a4546fde0bcda4793090ebc4008983, type: 3}
   m_Name: Sample Bindings
   m_EditorClassIdentifier: 
-  _inputLayoutSets:
-  - _nameID: XBOX
+  _iconBindsContainersList:
+  - _nameID: Xbox
     _inputBindingCategory: 2
     _bindingPaths:
     - <Gamepad>/dpad/x
@@ -46,673 +46,183 @@ MonoBehaviour:
     - <Gamepad>/rightStick/right
     - <Gamepad>/leftTrigger
     - <Gamepad>/rightTrigger
-    - <Keyboard>/k
-    - <Keyboard>/l
-    - <Keyboard>/m
-    - <Keyboard>/n
-    - <Keyboard>/o
-    - <Keyboard>/p
-    - <Keyboard>/q
-    - <Keyboard>/r
-    - <Keyboard>/s
-    - <Keyboard>/t
-    - <Keyboard>/u
-    - <Keyboard>/v
-    - <Keyboard>/w
-    - <Keyboard>/x
-    - <Keyboard>/y
-    - <Keyboard>/z
-    - <Keyboard>/1
-    - <Keyboard>/2
-    - <Keyboard>/3
-    - <Keyboard>/4
-    - <Keyboard>/5
-    - <Keyboard>/6
-    - <Keyboard>/7
-    - <Keyboard>/8
-    - <Keyboard>/9
-    - <Keyboard>/0
-    - <Keyboard>/leftShift
-    - <Keyboard>/rightShift
-    - <Keyboard>/shift
-    - <Keyboard>/leftAlt
-    - <Keyboard>/rightAlt
-    - <Keyboard>/alt
-    - <Keyboard>/leftCtrl
-    - <Keyboard>/rightCtrl
-    - <Keyboard>/ctrl
-    - <Keyboard>/leftMeta
-    - <Keyboard>/rightMeta
-    - <Keyboard>/contextMenu
-    - <Keyboard>/backspace
-    - <Keyboard>/pageDown
-    - <Keyboard>/pageUp
-    - <Keyboard>/home
-    - <Keyboard>/end
-    - <Keyboard>/insert
-    - <Keyboard>/delete
-    - <Keyboard>/capsLock
-    - <Keyboard>/numLock
-    - <Keyboard>/printScreen
-    - <Keyboard>/scrollLock
-    - <Keyboard>/pause
-    - <Keyboard>/numpadEnter
-    - <Keyboard>/numpadDivide
-    - <Keyboard>/numpadMultiply
-    - <Keyboard>/numpadPlus
-    - <Keyboard>/numpadMinus
-    - <Keyboard>/numpadPeriod
-    - <Keyboard>/numpadEquals
-    - <Keyboard>/numpad1
-    - <Keyboard>/numpad2
-    - <Keyboard>/numpad3
-    - <Keyboard>/numpad4
-    - <Keyboard>/numpad5
-    - <Keyboard>/numpad6
-    - <Keyboard>/numpad7
-    - <Keyboard>/numpad8
-    - <Keyboard>/numpad9
-    - <Keyboard>/numpad0
-    - <Keyboard>/f1
-    - <Keyboard>/f2
-    - <Keyboard>/f3
-    - <Keyboard>/f4
-    - <Keyboard>/f5
-    - <Keyboard>/f6
-    - <Keyboard>/f7
-    - <Keyboard>/f8
-    - <Keyboard>/f9
-    - <Keyboard>/f10
-    - <Keyboard>/f11
-    - <Keyboard>/f12
-    - <Keyboard>/OEM1
-    - <Keyboard>/OEM2
-    - <Keyboard>/OEM3
-    - <Keyboard>/OEM4
-    - <Keyboard>/OEM5
-    - <Keyboard>/IMESelected
-    _bindingTextures:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 2800000, guid: f609c9b3b1675f947a865ec558b5ad90, type: 3}
-    - {fileID: 2800000, guid: cde7469096582e04897fae80dfc34fbe, type: 3}
-    - {fileID: 2800000, guid: 17fd7d74524d4cc4ea612a100880d012, type: 3}
-    - {fileID: 2800000, guid: d08c52c09554ca8418a86627f4bd14e1, type: 3}
-    - {fileID: 2800000, guid: 139b83464b859cd429d0370dc816028c, type: 3}
-    - {fileID: 2800000, guid: 9c61f7c9d0b7b8b4f9d2350b73289e23, type: 3}
-    - {fileID: 2800000, guid: 672696fcd6aec9d4c84945fa59765f64, type: 3}
-    - {fileID: 2800000, guid: ed60ff0de79971e468ae179e077d66ca, type: 3}
-    - {fileID: 2800000, guid: 5c1e24bea89729e4a8ed25e26a432f84, type: 3}
-    - {fileID: 2800000, guid: 4273c283a5e145a468dc60af5dcb46e7, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 2800000, guid: d29819659aa175a459d7c519a30d70aa, type: 3}
-    - {fileID: 2800000, guid: 0ae60af4bd5e539409acc10ec4300105, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - _nameID: Keyboard
-    _inputBindingCategory: 0
-    _bindingPaths:
-    - <Keyboard>/anyKey
-    - <Keyboard>/escape
-    - <Keyboard>/space
-    - <Keyboard>/enter
-    - <Keyboard>/tab
-    - <Keyboard>/backquote
-    - <Keyboard>/quote
-    - <Keyboard>/semicolon
-    - <Keyboard>/comma
-    - <Keyboard>/period
-    - <Keyboard>/slash
-    - <Keyboard>/backslash
-    - <Keyboard>/leftBracket
-    - <Keyboard>/rightBracket
-    - <Keyboard>/minus
-    - <Keyboard>/equals
-    - <Keyboard>/upArrow
-    - <Keyboard>/downArrow
-    - <Keyboard>/leftArrow
-    - <Keyboard>/rightArrow
-    - <Keyboard>/a
-    - <Keyboard>/b
-    - <Keyboard>/c
-    - <Keyboard>/d
-    - <Keyboard>/e
-    - <Keyboard>/f
-    - <Keyboard>/g
-    - <Keyboard>/h
-    - <Keyboard>/i
-    - <Keyboard>/j
-    - <Keyboard>/k
-    - <Keyboard>/l
-    - <Keyboard>/m
-    - <Keyboard>/n
-    - <Keyboard>/o
-    - <Keyboard>/p
-    - <Keyboard>/q
-    - <Keyboard>/r
-    - <Keyboard>/s
-    - <Keyboard>/t
-    - <Keyboard>/u
-    - <Keyboard>/v
-    - <Keyboard>/w
-    - <Keyboard>/x
-    - <Keyboard>/y
-    - <Keyboard>/z
-    - <Keyboard>/1
-    - <Keyboard>/2
-    - <Keyboard>/3
-    - <Keyboard>/4
-    - <Keyboard>/5
-    - <Keyboard>/6
-    - <Keyboard>/7
-    - <Keyboard>/8
-    - <Keyboard>/9
-    - <Keyboard>/0
-    - <Keyboard>/leftShift
-    - <Keyboard>/rightShift
-    - <Keyboard>/shift
-    - <Keyboard>/leftAlt
-    - <Keyboard>/rightAlt
-    - <Keyboard>/alt
-    - <Keyboard>/leftCtrl
-    - <Keyboard>/rightCtrl
-    - <Keyboard>/ctrl
-    - <Keyboard>/leftMeta
-    - <Keyboard>/rightMeta
-    - <Keyboard>/contextMenu
-    - <Keyboard>/backspace
-    - <Keyboard>/pageDown
-    - <Keyboard>/pageUp
-    - <Keyboard>/home
-    - <Keyboard>/end
-    - <Keyboard>/insert
-    - <Keyboard>/delete
-    - <Keyboard>/capsLock
-    - <Keyboard>/numLock
-    - <Keyboard>/printScreen
-    - <Keyboard>/scrollLock
-    - <Keyboard>/pause
-    - <Keyboard>/numpadEnter
-    - <Keyboard>/numpadDivide
-    - <Keyboard>/numpadMultiply
-    - <Keyboard>/numpadPlus
-    - <Keyboard>/numpadMinus
-    - <Keyboard>/numpadPeriod
-    - <Keyboard>/numpadEquals
-    - <Keyboard>/numpad1
-    - <Keyboard>/numpad2
-    - <Keyboard>/numpad3
-    - <Keyboard>/numpad4
-    - <Keyboard>/numpad5
-    - <Keyboard>/numpad6
-    - <Keyboard>/numpad7
-    - <Keyboard>/numpad8
-    - <Keyboard>/numpad9
-    - <Keyboard>/numpad0
-    - <Keyboard>/f1
-    - <Keyboard>/f2
-    - <Keyboard>/f3
-    - <Keyboard>/f4
-    - <Keyboard>/f5
-    - <Keyboard>/f6
-    - <Keyboard>/f7
-    - <Keyboard>/f8
-    - <Keyboard>/f9
-    - <Keyboard>/f10
-    - <Keyboard>/f11
-    - <Keyboard>/f12
-    - <Keyboard>/OEM1
-    - <Keyboard>/OEM2
-    - <Keyboard>/OEM3
-    - <Keyboard>/OEM4
-    - <Keyboard>/OEM5
-    - <Keyboard>/IMESelected
-    _bindingTextures:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 2800000, guid: f609c9b3b1675f947a865ec558b5ad90, type: 3}
-    - {fileID: 2800000, guid: d08c52c09554ca8418a86627f4bd14e1, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - _nameID: Mouse
-    _inputBindingCategory: 1
-    _bindingPaths:
-    - <Mouse>/position/x
-    - <Mouse>/position/y
-    - <Mouse>/delta/up
-    - <Mouse>/delta/down
-    - <Mouse>/delta/left
-    - <Mouse>/delta/right
-    - <Mouse>/delta/x
-    - <Mouse>/delta/y
-    - <Mouse>/scroll/up
-    - <Mouse>/scroll/down
-    - <Mouse>/scroll/left
-    - <Mouse>/scroll/right
-    - <Mouse>/scroll/x
-    - <Mouse>/scroll/y
-    - <Mouse>/press
-    - <Mouse>/leftButton
-    - <Mouse>/rightButton
-    - <Mouse>/middleButton
-    - <Mouse>/forwardButton
-    - <Mouse>/backButton
-    - <Mouse>/pressure
-    - <Mouse>/radius/x
-    - <Mouse>/radius/y
-    - <Mouse>/pointerId
-    - <Mouse>/displayIndex
-    - <Mouse>/clickCount
-    - <Keyboard>/g
-    - <Keyboard>/h
-    - <Keyboard>/i
-    - <Keyboard>/j
-    - <Keyboard>/k
-    - <Keyboard>/l
-    - <Keyboard>/m
-    - <Keyboard>/n
-    - <Keyboard>/o
-    - <Keyboard>/p
-    - <Keyboard>/q
-    - <Keyboard>/r
-    - <Keyboard>/s
-    - <Keyboard>/t
-    - <Keyboard>/u
-    - <Keyboard>/v
-    - <Keyboard>/w
-    - <Keyboard>/x
-    - <Keyboard>/y
-    - <Keyboard>/z
-    - <Keyboard>/1
-    - <Keyboard>/2
-    - <Keyboard>/3
-    - <Keyboard>/4
-    - <Keyboard>/5
-    - <Keyboard>/6
-    - <Keyboard>/7
-    - <Keyboard>/8
-    - <Keyboard>/9
-    - <Keyboard>/0
-    - <Keyboard>/leftShift
-    - <Keyboard>/rightShift
-    - <Keyboard>/shift
-    - <Keyboard>/leftAlt
-    - <Keyboard>/rightAlt
-    - <Keyboard>/alt
-    - <Keyboard>/leftCtrl
-    - <Keyboard>/rightCtrl
-    - <Keyboard>/ctrl
-    - <Keyboard>/leftMeta
-    - <Keyboard>/rightMeta
-    - <Keyboard>/contextMenu
-    - <Keyboard>/backspace
-    - <Keyboard>/pageDown
-    - <Keyboard>/pageUp
-    - <Keyboard>/home
-    - <Keyboard>/end
-    - <Keyboard>/insert
-    - <Keyboard>/delete
-    - <Keyboard>/capsLock
-    - <Keyboard>/numLock
-    - <Keyboard>/printScreen
-    - <Keyboard>/scrollLock
-    - <Keyboard>/pause
-    - <Keyboard>/numpadEnter
-    - <Keyboard>/numpadDivide
-    - <Keyboard>/numpadMultiply
-    - <Keyboard>/numpadPlus
-    - <Keyboard>/numpadMinus
-    - <Keyboard>/numpadPeriod
-    - <Keyboard>/numpadEquals
-    - <Keyboard>/numpad1
-    - <Keyboard>/numpad2
-    - <Keyboard>/numpad3
-    - <Keyboard>/numpad4
-    - <Keyboard>/numpad5
-    - <Keyboard>/numpad6
-    - <Keyboard>/numpad7
-    - <Keyboard>/numpad8
-    - <Keyboard>/numpad9
-    - <Keyboard>/numpad0
-    - <Keyboard>/f1
-    - <Keyboard>/f2
-    - <Keyboard>/f3
-    - <Keyboard>/f4
-    - <Keyboard>/f5
-    - <Keyboard>/f6
-    - <Keyboard>/f7
-    - <Keyboard>/f8
-    - <Keyboard>/f9
-    - <Keyboard>/f10
-    - <Keyboard>/f11
-    - <Keyboard>/f12
-    - <Keyboard>/OEM1
-    - <Keyboard>/OEM2
-    - <Keyboard>/OEM3
-    - <Keyboard>/OEM4
-    - <Keyboard>/OEM5
-    - <Keyboard>/IMESelected
-    _bindingTextures:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 2800000, guid: ff893738980015647bb6362510b840cb, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  test1: 0
+    _allowedPropertiesMask: 16384
+    _tags: []
+    _bindingData:
+    - _type: 2
+      _texture: {fileID: 2800000, guid: 2ee262d3676d86f47a63804b20c33577, type: 3}
+      _animSprites:
+      - {fileID: 325029850, guid: 2ee262d3676d86f47a63804b20c33577, type: 3}
+      - {fileID: -76844866, guid: 2ee262d3676d86f47a63804b20c33577, type: 3}
+      - {fileID: 1400051274, guid: 2ee262d3676d86f47a63804b20c33577, type: 3}
+      - {fileID: -767620190, guid: 2ee262d3676d86f47a63804b20c33577, type: 3}
+      _animationTime: 0.7
+    - _type: 2
+      _texture: {fileID: 2800000, guid: 9c98e5fc764fef24998bdc4261947206, type: 3}
+      _animSprites:
+      - {fileID: 750373429, guid: 9c98e5fc764fef24998bdc4261947206, type: 3}
+      - {fileID: -2109537934, guid: 9c98e5fc764fef24998bdc4261947206, type: 3}
+      - {fileID: -791993397, guid: 9c98e5fc764fef24998bdc4261947206, type: 3}
+      - {fileID: -2046370144, guid: 9c98e5fc764fef24998bdc4261947206, type: 3}
+      _animationTime: 0.7
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 4cc6aa9aa8107734da22c80d289cff98, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 4cc6aa9aa8107734da22c80d289cff98, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: d544feb63b186dd45b32d12cfc6762bf, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 44d8f279ef345c442ae875caa0c26731, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 44d8f279ef345c442ae875caa0c26731, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: cfa9b832ea5877745a96e61e8ffaeca2, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: f609c9b3b1675f947a865ec558b5ad90, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: d544feb63b186dd45b32d12cfc6762bf, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: cde7469096582e04897fae80dfc34fbe, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 17fd7d74524d4cc4ea612a100880d012, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: d08c52c09554ca8418a86627f4bd14e1, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 139b83464b859cd429d0370dc816028c, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 139b83464b859cd429d0370dc816028c, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 9c61f7c9d0b7b8b4f9d2350b73289e23, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 9c61f7c9d0b7b8b4f9d2350b73289e23, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 672696fcd6aec9d4c84945fa59765f64, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: ed60ff0de79971e468ae179e077d66ca, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 5c1e24bea89729e4a8ed25e26a432f84, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 5c1e24bea89729e4a8ed25e26a432f84, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 4273c283a5e145a468dc60af5dcb46e7, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 4273c283a5e145a468dc60af5dcb46e7, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 83fd624f2c3c99348b30f0d9a6379449, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 83fd624f2c3c99348b30f0d9a6379449, type: 3}
+      _animationTime: 0
+    - _type: 1
+      _texture: {fileID: 2800000, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      _animSprites:
+      - {fileID: 1727732869, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: 1686226746, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: 438899987, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: -1292977367, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: -210743279, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: 1748971752, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: -1062757407, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: 32436182, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      - {fileID: -1747248815, guid: e5c3de206b3d7374aa4b30aedc1c53c3, type: 3}
+      _animationTime: 0.24
+    - _type: 1
+      _texture: {fileID: 2800000, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      _animSprites:
+      - {fileID: -360197261, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: 563263187, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: 1674872582, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: 192713407, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: -1378460496, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: -1626162624, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: -520725871, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: 915858091, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      - {fileID: -1142364722, guid: 66d92a3a9411f9944806ada590e4a138, type: 3}
+      _animationTime: 0.24
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 23c1362e79d279f4e89ca13ad0fd6fbc, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 23c1362e79d279f4e89ca13ad0fd6fbc, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 9d9ddda455035e24aa90759ca62f52c4, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 9d9ddda455035e24aa90759ca62f52c4, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: e05dda40f7206504cb9a1cdc3b287826, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 75b758b9710a60d40bfba3d0ac82b795, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 1
+      _texture: {fileID: 2800000, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      _animSprites:
+      - {fileID: -2116714688, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: -1706751462, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: -600330427, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: -1719131662, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: -1630832452, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: 561556789, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: 1095527581, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: -1158081495, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      - {fileID: 1167178608, guid: a984b1e9dfb2df045934b6f4292d14fe, type: 3}
+      _animationTime: 0.24
+    - _type: 1
+      _texture: {fileID: 2800000, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      _animSprites:
+      - {fileID: -1174410525, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: -1947190934, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: 1076396304, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: -1656818463, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: 2049690398, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: 118438084, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: -1807810490, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: 2035131721, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      - {fileID: -212336372, guid: 8131e2d8268a58542a3ee60ec46d6bbd, type: 3}
+      _animationTime: 0.24
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 42cb17c86682e7f4a9b334623d99fcc4, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 42cb17c86682e7f4a9b334623d99fcc4, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 954a22cca92883e429eb20f2dd4259fd, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: 954a22cca92883e429eb20f2dd4259fd, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: e05dda40f7206504cb9a1cdc3b287826, type: 3}
+      _animSprites:
+      - {fileID: 21300000, guid: e05dda40f7206504cb9a1cdc3b287826, type: 3}
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: d29819659aa175a459d7c519a30d70aa, type: 3}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 2800000, guid: 0ae60af4bd5e539409acc10ec4300105, type: 3}
+      _animSprites: []
+      _animationTime: 0

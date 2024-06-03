@@ -1,0 +1,17 @@
+{
+    "name": "UtilEssentials.InputIconBinding",
+    "rootNamespace": "",
+    "references": [
+        "GUID:478a2357cc57436488a56e564b08d223",
+        "GUID:fbe916ca43ff73e448aaf76ff948a69f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

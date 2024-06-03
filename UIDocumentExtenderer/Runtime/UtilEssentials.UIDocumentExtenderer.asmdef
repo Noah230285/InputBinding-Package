@@ -1,0 +1,20 @@
+{
+    "name": "UtilEssentials.UIDocumentExtenderer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:55beff5453b27224995f414c017a6ff6",
+        "GUID:b3c668148aeb5634997b8e62ae35f49a",
+        "GUID:d8e1b9f514e9a374d9d7f3bce235c760",
+        "GUID:898cf052ee77a664fb631e4309beba40"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

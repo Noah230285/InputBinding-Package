@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
-namespace UtilEssentials.InputActionBinding.Editor
+namespace UtilEssentials.InputIconBinding.Editor
 {
     class ButtonIconsEditorWindow : EditorWindow
     {
@@ -11,8 +11,6 @@ namespace UtilEssentials.InputActionBinding.Editor
         SOButtonIconBindings _activeBindingSO;
         SerializedObject _activeBindingSOSerializedObject;
 
-
-        [MenuItem("Window/Button Icon Binding...")]
         public static void OpenWindow()
         {
             OpenWindow(null);
@@ -40,7 +38,7 @@ namespace UtilEssentials.InputActionBinding.Editor
         public void CreateGUI()
         {
             _activeBindingSO = null;
-            _bindingsElement = new ButtonIconBindingsElement();
+            _bindingsElement = new ButtonIconBindingsElement(this);
             rootVisualElement.Add(_bindingsElement);
             OnSelectionChange();
             _bindingsElement.BindSOButtonIconBindings(_activeBindingSOSerializedObject);

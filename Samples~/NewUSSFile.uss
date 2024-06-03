@@ -1,0 +1,34 @@
+.remappingButton > Button {
+    background-color: rgb(159, 61, 61);
+}
+
+#Controller > Button {
+    background-color: rgb(86, 123, 192);
+}
+
+.remappingButton > .iconButtonBorder {
+    border-left-color: rgb(45, 45, 60);
+    border-right-color: rgb(45, 45, 60);
+    border-top-color: rgb(45, 45, 60);
+    border-bottom-color: rgb(28, 28, 36);
+    border-top-width: 7px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 9px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.controllerButtonsContainer {
+    flex-shrink: 0;
+    min-width: 54%;
+}
+
+.inputRemapper > .unity-label {
+    -unity-font-style: bold-and-italic;
+    font-size: 30px;
+    -unity-text-align: middle-center;
+    color: rgb(24, 24, 60);
+}

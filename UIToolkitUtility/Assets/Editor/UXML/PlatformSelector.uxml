@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:Label text="Platforms" display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+        <ui:VisualElement style="background-color: rgb(51, 51, 51);">
+            <ui:Toggle label="Any Platform" name="IncludeExcludeToggle" />
+            <ui:Label text="Include Platforms" display-tooltip-when-elided="true" name="IncludeExcludeTitle" style="-unity-font-style: bold;" />
+            <ui:VisualElement name="OptionsContainer" />
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Button text="Select all" display-tooltip-when-elided="true" name="SelectAll" />
+                <ui:Button text="Deselect all" display-tooltip-when-elided="true" name="DeselectAll" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

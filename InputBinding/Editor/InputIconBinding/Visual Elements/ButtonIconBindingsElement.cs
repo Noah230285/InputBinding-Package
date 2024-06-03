@@ -1,372 +1,279 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.EditorCoroutines.Editor;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Layouts;
 using UnityEngine.UIElements;
-using UtilEssentials.UIToolkitUtility;
 using UtilEssentials.UIToolkitUtility.Editor;
-using static UtilEssentials.InputActionBinding.SOButtonIconBindings;
+using UtilEssentials.UIToolkitUtility.Editor.VisualElements;
 
 
-namespace UtilEssentials.InputActionBinding.Editor
+namespace UtilEssentials.InputIconBinding.Editor
 {
     public class ButtonIconBindingsElement : VisualElement
     {
-        string[] inputHeaderNames;
-        public static readonly string[] _bindingPaths =
+        // Strings that align with InputBindingCategories
+        internal static readonly string[] _bindingPaths =
         {
-        //"None",
         "Keyboard",
         "Mouse",
         "Gamepad"
         };
-        readonly static string[] _iconFiles = 
+        internal readonly static string[] _iconFiles = 
         { 
         "Keyboard.png",
         "Mouse.png",
         "Controller.png"
         };
-        Texture2D[] _bindingPathIcons;
+        internal Texture2D[] _bindingPathIcons;
 
-        class InputLayoutSetProperties
+        // Binding path + display name 
+        internal static KeyValuePair<string, string>[][] _bindingPathsData;
+
+        // Misc child elements
+        internal VisualElement _bindSetBodiesContainer;
+        internal VisualElement _bindSetHeadersContainer;
+        internal Button _addSetHeaderButton;
+        internal Slider _bindingSizeSlider;
+        internal VisualElement _overlayElement;
+
+        // Header menu elements
+        internal VisualElement _headerMenuElement;
+        internal Label _headerMenuTitleLabel;
+        internal VisualElement _headerMenuIconElement;
+        internal EnumField _headerMenuInputCategoryEnumField;
+        internal PlatformSelectorElement _headerMenuPlatformSelector;
+        internal PropertyField _headerMenuTags;
+
+        // Icon bind menu elements
+        internal VisualElement _iconBindMenuElement;
+        internal Label _iconBindMenuTitleLabel;
+        internal TextField _iconBindMenuBindingPathTextField;
+        internal EnumField _iconBindMenuIconTypeEnumField;
+        internal ObjectField _iconBindMenuTextureField;
+        internal Vector2IntField _iconBindMenuFlipBookSizeVec2IntField;
+        internal FloatField _iconBindMenuFramesFloatField;
+        internal FloatField _iconBindMenuAnimationTimeFloatField;
+        internal VisualElement _iconBindMenuIconElement;
+
+        // Visual tree assets
+        internal VisualTreeAsset _setHeaderTreeAsset;
+        internal VisualTreeAsset _buttonIconBinderTreeAsset;
+
+        // Misc object references
+        internal SerializedObject _activeBindingSOSerializedObject;
+        internal EditorWindow _encompassingWindow;
+
+        // Values for the icon bind size slider
+        const float _lowScale = 50;
+        const float _highScale = 130;
+
+        const float _lowFontSize = 5;
+        const float _highFontSize = 13;
+
+        // Misc
+        internal bool _blockEnumRefresh;
+        internal Action _onCloseMenu;
+        internal Action<float, float> _bindSizeChanged;
+        internal ButtonIconSetHeaderElement _openMenu;
+
+
+        public ButtonIconBindingsElement(EditorWindow encompassingWindow)
         {
-            public SerializedProperty PrimaryProperty;
-            public SerializedProperty BindingCategoryProperty;
-            public SerializedProperty BindingPathsArrayProperty;
-            public SerializedProperty BindingTexturesArrayProperty;
-        }
-        List<InputLayoutSetProperties> _inputLayoutSetProperties = new();
+            _encompassingWindow = encompassingWindow;
 
-        KeyValuePair<string, InputControlLayout.ControlItem>[][] _bindingPathsData;
-
-        VisualElement _bindSetBody;
-        VisualElement _bindSetHeadersContainer;
-        Button _addSetHeaderButton;
-        Slider _bindingSizeSlider;
-        Action<float, float> _bindSizeChanged;
-
-        VisualTreeAsset _setHeaderTreeAsset;
-        VisualTreeAsset _buttonIconContainerTreeAsset;
-
-        string _beginingPath;
-
-        SerializedObject _activeBindingSOSerializedObject;
-
-        VisualElement _openInputBindContainer;
-
-        bool _blockEnumRefresh;
-
-        public ButtonIconBindingsElement()
-        {
-            _bindingPathsData = new KeyValuePair<string, InputControlLayout.ControlItem>[_bindingPaths.Length][];
-            for (int i = 0; i < _bindingPaths.Length; i++)
+            // Get the binding paths of each binding category
+            if (_bindingPathsData == null)
             {
-                Dictionary<string, InputControlLayout.ControlItem> bindingPaths = new Dictionary<string, InputControlLayout.ControlItem>();
-                FindChildBindings(_bindingPaths[i], bindingPaths);
-                _bindingPathsData[i] = bindingPaths.ToArray();
+                _bindingPathsData = new KeyValuePair<string, string>[_bindingPaths.Length][];
+                for (int i = 0; i < _bindingPaths.Length; i++)
+                {
+                    Dictionary<string, string> bindingPaths = new Dictionary<string, string>();
+                    FindChildBindings(_bindingPaths[i], "", bindingPaths);
+                    _bindingPathsData[i] = bindingPaths.ToArray();
+                }
             }
 
             //Find the path for this package
             string assetPath = new System.Diagnostics.StackTrace(true).GetFrame(0).GetFileName();
-            string beginingPath = UIToolkitUtilityFunctions.GetBeginningOfPackagePath(assetPath, "com._s.utility_essentials");
+            string beginningPath = UIToolkitUtilityFunctions.GetBeginningOfPackagePath(assetPath, "com._s.utility_essentials");
 
             _bindingPathIcons = new Texture2D[_iconFiles.Length];
             for (int i = 0; i < _iconFiles.Length; i++)
             {
                 _bindingPathIcons[i] = AssetDatabase.LoadAssetAtPath<Texture2D>(
-            $"{_beginingPath}/InputBinding/Assets/Editor/InputIconBinding/Textures/{_iconFiles[i]}");
+            $"{beginningPath}/InputBinding/Assets/Editor/InputIconBinding/Textures/{_iconFiles[i]}");
             }
-
             VisualTreeAsset visualTree = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(
-            $"{_beginingPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/ButtonIconBindingsUXML.uxml");
+            $"{beginningPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/ButtonIconBindingsUXML.uxml");
 
             visualTree.CloneTree(this);
 
             // A stylesheet can be added to a VisualElement.
             // The style will be applied to the VisualElement and all of its children.
-            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"{_beginingPath}/InputBinding/Assets/Editor/InputIconBinding/USS/ButtonIconBindingsUSS.uss");
+            var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>($"{beginningPath}/InputBinding/Assets/Editor/InputIconBinding/USS/ButtonIconBindingsUSS.uss");
             styleSheets.Add(styleSheet);
-
             this.style.flexGrow = 1;
 
-            _addSetHeaderButton = this.Q("AddInput") as Button;
-            _bindSetBody = this.Q("BindSetBody");
-            _bindSetHeadersContainer = this.Q("BindSetHeadersContainer");
-            _bindingSizeSlider = this.Q("BindingSizeSlider") as Slider;
+            // Get misc child elements
+            _addSetHeaderButton = this.Q<Button>("AddInput");
+            _bindSetBodiesContainer = this.Q<VisualElement>("BindSetBody");
+            _bindSetHeadersContainer = this.Q<VisualElement>("BindSetHeadersContainer");
+            _bindingSizeSlider = this.Q<Slider>("BindingSizeSlider");
+            _overlayElement = this.Q<VisualElement>("Overlay");
 
-            _setHeaderTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{_beginingPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/BindSetHeader.uxml");
-
-            _buttonIconContainerTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{_beginingPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/ButtonIconContainer.uxml");
-
-            _addSetHeaderButton.clicked += AddNewLayoutSet;
-
-            const float lowScale = 50;
-            const float highScale = 130;
-
-            const float lowFont = 5;
-            const float highFont = 13;
+            _overlayElement.style.display = DisplayStyle.Flex;
+            _addSetHeaderButton.clicked += AddNewIconBindsContainerHeader;
 
             _bindingSizeSlider.value = 0.5f;
             _bindingSizeSlider.RegisterValueChangedCallback((x) =>
             {
-                _bindSizeChanged?.Invoke(Mathf.Lerp(lowScale, highScale, x.newValue), Mathf.Lerp(lowFont, highFont, x.newValue));
+                _bindSizeChanged?.Invoke(Mathf.Lerp(_lowScale, _highScale, x.newValue), Mathf.Lerp(_lowFontSize, _highFontSize, x.newValue));
             });
 
-            Undo.undoRedoPerformed += Refresh;
+
+            // Get header menu elements
+            _headerMenuElement = this.Q<VisualElement>("HeaderMenu");
+            _headerMenuTitleLabel = _headerMenuElement.Q<Label>("HeaderMenuTitle");
+            _headerMenuIconElement = _headerMenuElement.Q<VisualElement>("HeaderMenuIcon");
+            _headerMenuInputCategoryEnumField = _headerMenuElement.Q<EnumField>("HeaderMenuInputCategory");
+            _headerMenuPlatformSelector = _headerMenuElement.Q<PlatformSelectorElement>("HeaderMenuPlatformSelector");
+            _headerMenuTags = _headerMenuElement.Q<PropertyField>("HeaderMenuTags");
+
+            _headerMenuPlatformSelector.encompassingWindow = _encompassingWindow;
+
+
+            // Get icon bind menu elements
+            _iconBindMenuElement =  this.Q<VisualElement>("IconBindMenu"); 
+            _iconBindMenuTitleLabel = _iconBindMenuElement.Q<Label>("IconBindMenuTitle");
+            _iconBindMenuBindingPathTextField = _iconBindMenuElement.Q<TextField>("IconBindMenuBindingPathLabel");
+            _iconBindMenuIconTypeEnumField = _iconBindMenuElement.Q<EnumField>("IconBindMenuIconType");
+            _iconBindMenuTextureField = _iconBindMenuElement.Q<ObjectField>("IconBindMenuTextureField");
+            _iconBindMenuAnimationTimeFloatField = _iconBindMenuElement.Q<FloatField>("IconBindMenuAnimationTime");
+            _iconBindMenuIconElement = _iconBindMenuElement.Q<VisualElement>("IconBindMenuIcon");
+
+            _iconBindMenuAnimationTimeFloatField.RegisterValueChangedCallback((x) =>
+            {
+                _iconAnimationLoopTime = x.newValue;
+            });
+
+
+            // Load the visual assets that will be copied from several times
+            _setHeaderTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{beginningPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/BindSetHeader.uxml");
+            _buttonIconBinderTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>($"{beginningPath}/InputBinding/Assets/Editor/InputIconBinding/UXML/ButtonIconContainer.uxml");
+
+
+             Undo.undoRedoPerformed += Refresh;
         }
 
         ~ButtonIconBindingsElement()
         {
             Undo.undoRedoPerformed -= Refresh;
         }
-        void AddNewLayoutSet()
-        {
-            Undo.RegisterFullObjectHierarchyUndo(_activeBindingSOSerializedObject.targetObject, "Add header");
-            // Add a new InputLayoutSet to the list in the scriptable object
-            SerializedProperty _inputLayoutSetsProperty = _activeBindingSOSerializedObject.FindProperty("_inputLayoutSets");
 
-            SerializedProperty iterator = _inputLayoutSetsProperty.Copy();
+        /// <summary>
+        /// Add a new IconBindsContainer to the list in the scriptable object, and a VisualElement to access it to this
+        /// </summary>
+        void AddNewIconBindsContainerHeader()
+        {
+            Undo.RegisterFullObjectHierarchyUndo(_activeBindingSOSerializedObject.targetObject, "Add icon binds container header");
+
+            // Get the InputLayoutSet list in the scriptable object and append a new element to the end of it
+            SerializedProperty _iconBindsContainersListProperty = _activeBindingSOSerializedObject.FindProperty("_iconBindsContainersList");
+
+            SerializedProperty iterator = _iconBindsContainersListProperty.Copy();
 
             iterator.Next(true);
             iterator.Next(true);
             int arraySize = iterator.intValue;
+            _iconBindsContainersListProperty.InsertArrayElementAtIndex(arraySize);
             iterator.Next(true);
-
-            _inputLayoutSetsProperty.InsertArrayElementAtIndex(arraySize);
 
             for (int i = 0; i < arraySize; i++)
             {
                 iterator.Next(false);
             }
-            GenerateSetFromSerializedProperty(iterator, _inputLayoutSetsProperty);
 
+            _bindSetHeadersContainer.Add(new ButtonIconSetHeaderElement(this, iterator, _iconBindsContainersListProperty));
         }
 
-        void GenerateSetFromSerializedProperty(SerializedProperty inputLayoutSetProperty, SerializedProperty listProperty)
-        {
-            InputLayoutSetProperties inputLayoutSetProperties = new InputLayoutSetProperties();
-            SerializedProperty nameIDProperty = inputLayoutSetProperty.FindPropertyRelative("_nameID");
-
-            inputLayoutSetProperties.PrimaryProperty = inputLayoutSetProperty.Copy();
-            inputLayoutSetProperties.BindingCategoryProperty = inputLayoutSetProperty.FindPropertyRelative("_inputBindingCategory");
-            inputLayoutSetProperties.BindingPathsArrayProperty = inputLayoutSetProperty.FindPropertyRelative("_bindingPaths");
-            inputLayoutSetProperties.BindingTexturesArrayProperty = inputLayoutSetProperty.FindPropertyRelative("_bindingTextures");
-
-            _inputLayoutSetProperties.Add(inputLayoutSetProperties);
-            _activeBindingSOSerializedObject.ApplyModifiedProperties();
-
-            var root = new VisualElement();
-
-            _setHeaderTreeAsset.CloneTree(root);
-
-            _bindSetHeadersContainer.Add(root);
-
-            Button bodyButton = root.Q("BodyButton") as Button;
-            EnumField enumField = root.Q("EnumField") as EnumField;
-            TextField nameField = root.Q("NameField") as TextField;
-            VisualElement icon = root.Q("Icon");
-            Button deleteButton = root.Q("DeleteButton") as Button;
-
-            ScrollView thisBodyContainer = new ScrollView();
-            //thisBodyContainer.direction = SliderDirection.Vertical;
-            thisBodyContainer.AddToClassList("bindSetBody");
-            _bindSetBody.Add(thisBodyContainer);
-
-            enumField.BindProperty(inputLayoutSetProperties.BindingCategoryProperty);
-
-            Action openMenu = () =>
-            {
-                if (thisBodyContainer != _openInputBindContainer)
-                {
-                    thisBodyContainer.style.display = DisplayStyle.Flex;
-                    if (_openInputBindContainer != null)
-                    {
-                        _openInputBindContainer.style.display = DisplayStyle.None;
-                    }
-                    _openInputBindContainer = thisBodyContainer;
-
-                }
-            };
-            bodyButton.clicked += openMenu;
-            openMenu();
-
-            nameField.BindProperty(nameIDProperty);
-
-            Action<float, float> setAllBindSizes = null;
-            Action<float, float> onSetAllBindSizes = (scale, font) =>
-            {
-                setAllBindSizes?.Invoke(scale, font);
-                //thisBodyContainer.style.width = 0;
-                //thisBodyContainer.style.width = new StyleLength(StyleKeyword.Auto);
-
-                if (thisBodyContainer.style.display == DisplayStyle.Flex)
-                {
-                    var fakeOldRect = Rect.zero;
-                    var fakeNewRect = thisBodyContainer.layout;
-
-                    using var evt = GeometryChangedEvent.GetPooled(fakeOldRect, fakeNewRect);
-                    evt.target = thisBodyContainer.contentContainer;
-                    thisBodyContainer.contentContainer.SendEvent(evt);
-                }
-            };
-            _bindSizeChanged += onSetAllBindSizes;
-            Action<int> createInputBindings = (int previousValue) =>
-            {
-
-
-                setAllBindSizes = null;
-                int bindsIndex = inputLayoutSetProperties.BindingCategoryProperty.enumValueIndex;
-                int bindingsCount = _bindingPathsData[bindsIndex].Length;
-
-                Action clearArray = () =>
-                {
-                    Undo.RegisterCompleteObjectUndo(_activeBindingSOSerializedObject.targetObject, "Enum category changed");
-
-                    inputLayoutSetProperties.BindingPathsArrayProperty.ClearArray();
-                    inputLayoutSetProperties.BindingTexturesArrayProperty.ClearArray();
-
-                    inputLayoutSetProperties.BindingPathsArrayProperty.arraySize = bindingsCount;
-                    inputLayoutSetProperties.BindingTexturesArrayProperty.arraySize = bindingsCount;
-
-                    _activeBindingSOSerializedObject.ApplyModifiedPropertiesWithoutUndo();
-                };
-
-                if (previousValue > 0 && bindsIndex != previousValue)
-                {
-                    clearArray();
-                }
-                icon.style.backgroundImage = _bindingPathIcons[bindsIndex];
-
-                SerializedProperty bindingPathsIterator = inputLayoutSetProperties.BindingPathsArrayProperty.Copy();
-                SerializedProperty bindingTexturesIterator = inputLayoutSetProperties.BindingTexturesArrayProperty.Copy();
-
-
-
-                bindingPathsIterator.Next(true);
-                bindingPathsIterator.Next(true);
-                bindingPathsIterator.Next(true);
-                bindingTexturesIterator.Next(true);
-                bindingTexturesIterator.Next(true);
-                bindingTexturesIterator.Next(true);
-
-                thisBodyContainer.Clear();
-
-                for (int i = 0; i < bindingsCount; i++)
-                {
-                    VisualElement inputBindElement = new();
-
-                    _buttonIconContainerTreeAsset.CloneTree(inputBindElement);
-                    ObjectField textureField = inputBindElement.Q("TextureField") as ObjectField;
-                    Label label = inputBindElement.Q("Label") as Label;
-
-                    inputBindElement.style.flexGrow = 0;
-                    Action<float, float> setSize = (scale, font) =>
-                    {
-                        inputBindElement.ElementAt(0).style.width = scale;
-                        inputBindElement.ElementAt(0).style.height = scale;
-
-                        label.style.fontSize = font;
-                    };
-                    setAllBindSizes += setSize;
-
-                    string bindingPath = _bindingPathsData[bindsIndex][i].Key;
-
-                    string displayName = _bindingPathsData[bindsIndex][i].Value.displayName;
-                    label.text = displayName ?? bindingPath;
-                    textureField.tooltip = bindingPath;
-
-                    bindingPathsIterator.stringValue = bindingPath;
-
-                    textureField.value = bindingTexturesIterator.objectReferenceValue;
-                    textureField.BindProperty(bindingTexturesIterator);
-
-                    thisBodyContainer.Add(inputBindElement);
-
-                    bindingPathsIterator.Next(false);
-                    bindingTexturesIterator.Next(false);
-                }
-
-                _activeBindingSOSerializedObject.ApplyModifiedPropertiesWithoutUndo();
-            };
-            enumField.RegisterValueChangedCallback((x) =>
-            {
-                if (_blockEnumRefresh)
-                {
-                    return;
-                }
-                createInputBindings((int)(InputBindingCategories)x.previousValue);
-            });
-            createInputBindings(-1);
-
-            Action deleteThisBindSet = () =>
-            {
-                SerializedProperty iterator = listProperty.Copy();
-
-                iterator.Next(true);
-                iterator.Next(true);
-                int arraySize = iterator.intValue;
-                iterator.Next(true);
-
-                for (int i = 0; i < arraySize; i++)
-                {
-                    if (iterator.propertyPath.Equals(inputLayoutSetProperties.PrimaryProperty.propertyPath))
-                    {
-                        Undo.RegisterFullObjectHierarchyUndo(_activeBindingSOSerializedObject.targetObject, "Header Set Deleted");
-
-                        listProperty.DeleteArrayElementAtIndex(i);
-                        root.parent.Remove(root);
-                        _activeBindingSOSerializedObject.ApplyModifiedPropertiesWithoutUndo();
-                        return;
-                    }
-                    iterator.Next(false);
-                }
-            };
-
-            deleteButton.clicked += deleteThisBindSet;
-        }
-
+        /// <summary>
+        /// Wait until the end of the frame to reconstruct the header and body visual elements
+        /// </summary>
         public void Refresh()
         {
             _blockEnumRefresh = true;
-            CoroutineHost.instance.EndOfFrameAction(() =>
+            _encompassingWindow.StartCoroutine(RefreshWait());
+            IEnumerator RefreshWait()
             {
+                yield return null;
                 BindSOButtonIconBindings(_activeBindingSOSerializedObject);
                 _blockEnumRefresh = false;
-            });
+            }
         }
 
-        public void BindSOButtonIconBindings(SerializedObject serializedObject)
+        /// <summary>
+        /// Binds a SOBUttonIconBindings to this element using its serializedObject
+        /// </summary>
+        /// <param name="SOserializedObject"> The serialized object of the ScriptableObject this is currently bound to</param>
+        public void BindSOButtonIconBindings(SerializedObject SOserializedObject)
         {
-            if (serializedObject == null)
+            if (SOserializedObject == null)
             {
+                this.Q<VisualElement>("Overlay").style.display = DisplayStyle.Flex;
                 return;
             }
 
-            _bindSetBody.Clear();
+            if (_activeBindingSOSerializedObject == null)
+            {
+                this.Q<VisualElement>("Overlay").style.display = DisplayStyle.None;
+            }
+
+
+            _bindSetBodiesContainer.Clear();
             _bindSetHeadersContainer.Clear();
 
-            _activeBindingSOSerializedObject = serializedObject;
+            _activeBindingSOSerializedObject = SOserializedObject;
 
-            SerializedProperty _inputLayoutSetsProperty = _activeBindingSOSerializedObject.FindProperty("_inputLayoutSets");
-            SerializedProperty iterator = _inputLayoutSetsProperty.Copy();
+            SerializedProperty _iconBindsContainersListProperty = _activeBindingSOSerializedObject.FindProperty("_iconBindsContainersList");
+            SerializedProperty iterator = _iconBindsContainersListProperty.Copy();
 
             iterator.Next(true);
             iterator.Next(true);
             int arraySize = iterator.intValue;
             iterator.Next(true);
 
+            if (arraySize == 0)
+            {
+                _headerMenuElement.style.display = DisplayStyle.None;
+                _iconBindMenuElement.style.display = DisplayStyle.None;
+                return;
+            }
+
             for (int i = 0; i < arraySize; i++)
             {
-                GenerateSetFromSerializedProperty(iterator, _inputLayoutSetsProperty);
+                _bindSetHeadersContainer.Add(new ButtonIconSetHeaderElement(this, iterator, _iconBindsContainersListProperty));
                 iterator.Next(false);
+            }
+            if (_bindSetHeadersContainer.childCount > 0)
+            {
+                (_bindSetHeadersContainer.ElementAt(0) as ButtonIconSetHeaderElement).OpenHeaderMenu();
             }
         }
 
-        static bool FindChildBindings(string name, Dictionary<string, InputControlLayout.ControlItem> bindingPaths, Stack<string> pathStack = null)
+        /// <summary>
+        /// Finds all of the bindings for the input category
+        /// </summary>
+        /// <param name="name">Name of the input</param>
+        /// <param name="displayName">Display name of the input</param>
+        /// <param name="bindingPaths">Dictionary with binding path as the key and display name as the value</param>
+        /// <param name="pathStack">The binding path that the is being searched for child bindings</param>
+        /// <returns>Whether there are children of the input binding/the input binding is valid</returns>
+        static bool FindChildBindings(string name, string displayName, Dictionary<string, string> bindingPaths, Stack<string> pathStack = null)
         {
             if (name == null || name == "")
             {
@@ -396,12 +303,17 @@ namespace UtilEssentials.InputActionBinding.Editor
             {
                 pathStack.Push(c.name);
 
-                if (!FindChildBindings(c.layout, bindingPaths, pathStack))
+                if (!FindChildBindings(c.layout, c.displayName, bindingPaths, pathStack))
                 {
                     string bindingPath = string.Join("/", pathStack.Reverse());
                     if (!bindingPaths.ContainsKey(bindingPath))
                     {
-                        bindingPaths.Add(bindingPath, c);
+                        string dN = c.displayName;
+                        if (dN == "X" || dN == "Y" || dN == "Up" || dN == "Down" || dN == "Left" || dN == "Right")
+                        {
+                            dN = $"{displayName} {dN}";
+                        }
+                        bindingPaths.Add(bindingPath, dN);
                     }
                     pathStack.Pop();
                 }
@@ -411,6 +323,74 @@ namespace UtilEssentials.InputActionBinding.Editor
 
             return true;
         }
-    }
 
+        EditorCoroutine _iconAnimationCoroutine;
+        float _iconAnimationLoopTime;
+        public void STOPAnimateIconBindMenuIcon()
+        {
+            if (_iconAnimationCoroutine != null)
+            {
+                _encompassingWindow.StopCoroutine(_iconAnimationCoroutine);
+            }
+            _iconAnimationCoroutine = null;
+        }
+
+
+        public void AnimateIconBindMenuIcon(Sprite[] spriteArray, IconType type)
+        {
+            if (_iconAnimationCoroutine != null)
+            {
+                _encompassingWindow.StopCoroutine(_iconAnimationCoroutine);
+            }
+
+            _iconAnimationCoroutine = _encompassingWindow.StartCoroutine(IconAnimation(spriteArray, type));
+        }
+        IEnumerator IconAnimation(Sprite[] spriteArray, IconType type)
+        {
+            bool reversed = false;
+            int length = spriteArray.Length;
+            int currentIndex = 0;
+            float waitTime = 0;
+            double previousTotalTime = EditorApplication.timeSinceStartup;
+            _iconBindMenuIconElement.style.backgroundImage = new StyleBackground(spriteArray[0]);
+            while (true)
+            {
+                bool switchTex = false;
+                while (_iconAnimationLoopTime / (float)length <= waitTime)
+                {
+                    switchTex = true;
+                    if (_iconAnimationLoopTime <= 0)
+                    {
+                        waitTime = 0;
+                        break;
+                    }
+                    waitTime -= _iconAnimationLoopTime / (float)length;
+                }
+                if (switchTex)
+                {
+                    currentIndex = reversed ? currentIndex - 1 : currentIndex + 1;
+                    if (currentIndex == length || currentIndex < 0)
+                    {
+                        switch (type)
+                        {
+                            case IconType.Animated_ReverseLoop:
+                                reversed = !reversed;
+                                currentIndex = reversed ? currentIndex - 1 : currentIndex + 1;
+                                break;
+                            case IconType.Animated_RolloverLoop:
+                                currentIndex = 0;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                _iconBindMenuIconElement.style.backgroundImage = new StyleBackground(spriteArray[currentIndex]);
+
+                yield return null;
+                waitTime += (float)(EditorApplication.timeSinceStartup - previousTotalTime);
+                previousTotalTime = EditorApplication.timeSinceStartup;
+            }
+        }
+    }
 }
