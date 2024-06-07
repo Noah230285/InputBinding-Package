@@ -1,8 +1,8 @@
 # Input Binding
 
-**In order to use this package you will need to have UI Tookit Utility installed**
+**In order to use this package you will need to have [**UI Toolkit Utility**](https://github.com/Noah230285/UIToolkitUtility-Package.git) installed**
 
-There are two primary parts to this package. The first is runtime input rebinding via [**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html), the second is binding input paths to textures to use as representative icons. These bindings occur through unity's [**new input system**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html), so any project that wants to make use of these features will need to utilise that system for their inputs. To use this package its highly recommended that you have at least some intermediate knowledge of unity's [**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html) and [**InputSystem**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html) packages.
+There are two primary parts to this package. The first is runtime input rebinding via [**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html), the second is binding input paths to textures to use as representative icons. These bindings occur through unity's [**new input system**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html), so any project that wants to make use of these features will need to utilize that system for their inputs. To use this package it's highly recommended that you have at least some intermediate knowledge of Unity's [**UIToolkit**](https://docs.unity3d.com/Manual/UIElements.html) and [**InputSystem**](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.8/manual/index.html) packages.
 
 [**Input Remapping**](#input-remapping)\
 [&emsp;> **1. Initial setup**](#initial-setup)\
@@ -47,7 +47,7 @@ This package comes with its own set of UXML and USS under \
 [/InputBinding/Assets/InputActionBinding/UIToolkit/](../Assets/InputActionBinding/UIToolkit/) \
 The most relevant of these being [**InputRemapper**](../Assets/InputActionBinding/UIToolkit/VisualTreeAssets/InputRemapper.uxml), which has all the elements to be used for a single action binding. There are also UXML elements for the singular buttons, [**ButtonWithIcon**](../Assets/InputActionBinding/UIToolkit/VisualTreeAssets/InputRemapper.uxml), used in [**InputRemapper**](../Assets/InputActionBinding/UIToolkit/VisualTreeAssets/InputRemapper.uxml). Additionally, container element [**SubMenu**](../Assets/InputActionBinding/UIToolkit/VisualTreeAssets/SubMenu.uxml) can be used for easily setting up menus with a header.
 
-If you want to create your own UXML asset compatable with [**UXMLRemappingBinder**](../Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs), you can follow the instructions [here](#create-new-bindable-uxml-assets). Otherwise, if you want to learn how to use and modify the included UXML assets provided, you can find that [here](#using-existing-uxml-assets)
+If you want to create your own UXML asset compatible with [**UXMLRemappingBinder**](../Runtime/InputActionBinding/UIDocumentExtensions/UXMLRemmappingBinder.cs), you can follow the instructions [here](#create-new-bindable-uxml-assets). Otherwise, if you want to learn how to use and modify the included UXML assets provided, you can find that [here](#using-existing-uxml-assets)
 
 <br>
 
@@ -152,7 +152,7 @@ Opening a **SOButtonIconBindings** asset, such as the one created in the previou
 <img style="float: left; width: 500px;padding-right: 10px" src="Images/IconBindMenu.png">
 </div>
 
-The first thing you will need to create is a new **Binding Set** by pressing the **plus** icon on the left most container. If you have multiple bind sets, you can use the **garbage bind icon** on a **Binding Set** to delete it, and drag the **hamburger icon** to move it. Through the **Binding Set**, you can access all of the bindings of a chosens **input category**. The **input category** can be changed through clicking on the icon on the right of the **Binding Set**, or through the rightmost menu when the **Binding Set** is **selected**. More info on the other fields in **Binding Sets** can be found below.
+The first thing you will need to create is a new **Binding Set** by pressing the **plus** icon on the left-most container. If you have multiple bind sets, you can use the **garbage bind icon** on a **Binding Set** to delete it, and drag the **hamburger icon** to move it. Through the **Binding Set**, you can access all of the bindings of a chosen **input category**. The **input category** can be changed through clicking on the icon on the right of the **Binding Set**, or through the rightmost menu when the **Binding Set** is **selected**. More info on the other fields in **Binding Sets** can be found below.
 <br>
 <br>
 
@@ -170,7 +170,7 @@ The first thing you will need to create is a new **Binding Set** by pressing the
 <br>
 <br>
 
-Clicking on an **Binding Set** will display all of its contained **Icon Binds** inside the center container. Clicking on any of these will open the menu for that **Input Bind** on the rightmost division. Inside this menu it contains the **binding path** of the input being bound, and addition options for the icon, found below.
+Clicking on a **Binding Set** will display all of its contained **Icon Binds** inside the center container. Clicking on any of these will open the menu for that **Input Bind** on the rightmost division. Inside this menu contains the **binding path** of the input being bound, and additional options for the icon, found below.
 <br>
 <br>
 
@@ -219,15 +219,15 @@ This will automatically bind its background image to an icon, found using an **I
 
 If you want to use an icon in the middle of text, you can use an [**InputBindingTextWithIconsElement**](../Runtime/InputIconBinding/VisualElements/InputBindingTextWithIconsElement.cs)[**UXML control**](https://docs.unity3d.com/Manual/UIE-custom-controls.html), which can be found at \
 **UtilEssentials > InputActionBinding > UIToolkit > InputBindingTextWithIconsElement**.\
- If you add an **InputBindingIconElement** as a child element to this element, you can then can insert that icon element into a specific place in the text parameter **Total Text** using the inline tag **<icon="x">**, x being the child index of the **InputBindingIconElement** (Only including other **InputBindingIconElements**)
+ If you add an **InputBindingIconElement** as a child element to this element, you can then insert that icon element into a specific place in the text parameter **Total Text** using the inline tag **<icon="x">**, x being the child index of the **InputBindingIconElement** (Only including other **InputBindingIconElements**)
 
  ### Access Icon Binds Directly In Script
 
  There are two different ways to access an Icon from a binding using a set of search parameters, both **Static Functions** coming from the **ButtonIconBindingsEditorSettings** class. \
  The first is **ButtonIconBindingsEditorSettings.BindVisualElementImageToIconBinding()**, which takes a **VisualElement** and binds it directly to the found icon, including animating it. \
- The second is **ButtonIconBindingsEditorSettings.GetIconTextureFromBindingPath()**, which returns the a found texture matching the input search parameters. It is highly recommended not to use this second function for binding animated icons, since it will return the entire spritesheet.
+ The second is **ButtonIconBindingsEditorSettings.GetIconTextureFromBindingPath()**, which returns the found texture matching the input search parameters. It is highly recommended not to use this second function for binding animated icons, since it will return the entire spritesheet.
 
- The sourcecode for each function can be found [**here**](../Runtime/InputIconBinding/ButtonIconBindingsEditorSettings.cs), with an additional description of the **ButtonIconBindingsEditorSettings.BindVisualElementImageToIconBinding()** function found below.
+ The source code for each function can be found [**here**](../Runtime/InputIconBinding/ButtonIconBindingsEditorSettings.cs), with an additional description of the **ButtonIconBindingsEditorSettings.BindVisualElementImageToIconBinding()** function found below.
 
 
 
