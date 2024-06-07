@@ -15,6 +15,13 @@
     "com.unity.addressables": "1.21.20",
     "com.unity.editorcoroutines": "1.0.0",
     "com.utility_essentials.ui_toolkit_utility": "1.0.0"
+  },
 
-  }
+  "samples": [
+      {
+          "displayName": "Input Remapping",
+          "description": "Contains a sample UXML file, scene, icon bindings, and icon textures, that demonstrates how you would implement input remapping and icon binding",
+          "path": "Samples~/InputRemappingExample"
+      }
+    ]
 }
