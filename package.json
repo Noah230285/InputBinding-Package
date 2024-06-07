@@ -19,7 +19,7 @@
 
   "samples": [
       {
-          "displayName": "Input Remapping",
+          "displayName": "Input Remapping and Icon Binding Example Scene",
           "description": "Contains a sample UXML file, scene, icon bindings, and icon textures, that demonstrates how you would implement input remapping and icon binding",
           "path": "Samples~/InputRemappingExample"
       }
