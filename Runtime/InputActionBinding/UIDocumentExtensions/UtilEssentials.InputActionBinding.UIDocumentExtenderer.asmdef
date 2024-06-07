@@ -1,0 +1,18 @@
+{
+    "name": "UtilEssentials.InputActionBinding.UIDocumentExtenderer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:157f1be2ec66bd049885e67f7a4392c8",
+        "GUID:59a389d33f8cfa74cbaebad51964815c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

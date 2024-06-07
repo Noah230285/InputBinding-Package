@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a4546fde0bcda4793090ebc4008983, type: 3}
+  m_Name: Sample Bindings 1
+  m_EditorClassIdentifier: 
+  _iconBindsContainersList:
+  - _nameID: ControllerExample
+    _inputBindingCategory: 2
+    _bindingPaths:
+    - <Gamepad>/dpad/x
+    - <Gamepad>/dpad/y
+    - <Gamepad>/dpad/up
+    - <Gamepad>/dpad/down
+    - <Gamepad>/dpad/left
+    - <Gamepad>/dpad/right
+    - <Gamepad>/buttonSouth
+    - <Gamepad>/buttonWest
+    - <Gamepad>/buttonNorth
+    - <Gamepad>/buttonEast
+    - <Gamepad>/leftStickPress
+    - <Gamepad>/rightStickPress
+    - <Gamepad>/leftShoulder
+    - <Gamepad>/rightShoulder
+    - <Gamepad>/start
+    - <Gamepad>/select
+    - <Gamepad>/leftStick/up
+    - <Gamepad>/leftStick/x
+    - <Gamepad>/leftStick/y
+    - <Gamepad>/leftStick/down
+    - <Gamepad>/leftStick/left
+    - <Gamepad>/leftStick/right
+    - <Gamepad>/rightStick/up
+    - <Gamepad>/rightStick/x
+    - <Gamepad>/rightStick/y
+    - <Gamepad>/rightStick/down
+    - <Gamepad>/rightStick/left
+    - <Gamepad>/rightStick/right
+    - <Gamepad>/leftTrigger
+    - <Gamepad>/rightTrigger
+    _activePlatforms: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    _tags:
+    - 
+    _bindingData:
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0
+    - _type: 0
+      _texture: {fileID: 0}
+      _animSprites: []
+      _animationTime: 0

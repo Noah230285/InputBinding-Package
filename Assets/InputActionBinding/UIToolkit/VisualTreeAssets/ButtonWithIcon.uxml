@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/TETETETET/com._s.utility_essentials/InputBinding/Assets/InputActionBinding/UIToolkit/USS/IconButton.uss?fileID=7433441132597879392&amp;guid=245ac85822c12fa4ea2385651427c7d4&amp;type=3#IconButton" />
+    <Style src="project://database/Assets/TETETETET/com._s.utility_essentials/InputBinding/Assets/InputActionBinding/UIToolkit/USS/Menu%20UI.uss?fileID=7433441132597879392&amp;guid=2c8a993800a89af419046bd542d82b34&amp;type=3#Menu UI" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" focusable="true" class="iconButton iconButtonBorder">
+        <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement name="Icon" default-text="UNBOUND" />
+        <ui:VisualElement name="ButtonOverlay" />
+        <ui:VisualElement class="iconButtonBorder" style="display: none; visibility: hidden;" />
+    </ui:Button>
+</ui:UXML>

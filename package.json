@@ -1,6 +1,6 @@
 {
-  "name": "com._s.utility_essentials",
-  "displayName": "Util Essentials",
+  "name": "com.utility_essentials.input_binding",
+  "displayName": "Input Binding",
   "version": "1.0.0",
   "unity": "2021.3",
   "keywords": [
@@ -12,6 +12,9 @@
   "dependencies": {
     "com.unity.inputsystem": "1.4.4",
     "com.unity.textmeshpro": "3.0.6",
-    "com.unity.addressables": "1.21.20"
+    "com.unity.addressables": "1.21.20",
+    "com.unity.editorcoroutines": "1.0.0",
+    "com.utility_essentials.ui_toolkit_utility": "1.0.0"
+
   }
 }

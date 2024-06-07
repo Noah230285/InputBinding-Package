@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UXML Menu Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: UXML Menu Assets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bcb1973b8d9ae21439dd6b6121af3869
+  m_SerializeEntries:
+  - m_GUID: 0679fa4813bd50d4aab1b43ff0ac5345
+    m_Address: InputActionBinding/InputRemapper.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce0624f21ec2c624bb21e62430cdee30
+    m_Address: InputActionBinding/SubMenu.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0731264a7e173684abbd749bd7ca3af6, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1d001f994cf033946b0372f23eaca879, type: 2}

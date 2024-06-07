@@ -1,9 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/TETETETET/com._s.utility_essentials/InputBinding/Assets/InputActionBinding/UIToolkit/USS/Menu%20UI.uss?fileID=7433441132597879392&amp;guid=2c8a993800a89af419046bd542d82b34&amp;type=3#Menu UI" />
     <ui:VisualElement style="flex-grow: 1; opacity: 1; flex-direction: row; justify-content: center;">
-        <ui:VisualElement style="flex-grow: 1;">
-            <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/leftStick/x" style="width: 200px; height: 200px; -unity-background-scale-mode: scale-to-fit;" />
-        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1;" />
         <ui:VisualElement style="width: 52%; margin-left: auto; margin-right: auto; background-color: rgb(52, 72, 69); align-items: stretch; flex-direction: column; position: absolute; height: 100%;">
             <UtilEssentials.UIToolkitUtility.Editor.VisualElements.FocusCompatableScrollView>
                 <UtilEssentials.InputActionBinding.UIToolkit.SubMenuElement title-label="Movement">
@@ -27,7 +25,27 @@
     <ui:VisualElement name="BindingOverlay" class="screenOverlay hidden" style="background-color: rgba(19, 23, 67, 0.44);">
         <ui:VisualElement style="width: 100%; height: 80%; background-color: rgba(7, 44, 75, 0.46); align-items: center; justify-content: center;">
             <ui:Label tabindex="-1" text="Rebinding primary input of &apos;Move Forward&apos;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TopLabel" style="font-size: 59px; color: rgb(255, 255, 255);" />
-            <ui:Label tabindex="-1" text="Press any input to register or esc to cancel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BottomLabel" style="font-size: 41px; color: rgb(255, 255, 255);" />
+            <UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement total-text="Press Any Input to register or press &lt;icon=&quot;0&quot;&gt; to cancel" style="font-size: 32px; -unity-font-style: bold; color: rgb(255, 255, 255); flex-direction: row;">
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement name="BottomLabelIcon" style="margin-left: 10px;" />
+            </UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement picking-mode="Ignore" style="position: absolute; width: 100%; height: 100%; flex-direction: column-reverse;">
+        <ui:VisualElement style="height: 84px; flex-direction: row-reverse; position: absolute; left: 0; right: 0; bottom: 0;">
+            <UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement text="abcde" total-text="&lt;icon=&quot;0&quot;&gt; Reset Binding" class="bindInteractorHints">
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/buttonNorth" name="ResetBindIcon" />
+            </UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement>
+            <UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement text="abcde" total-text="&lt;icon=&quot;0&quot;&gt; Empty Binding" class="bindInteractorHints">
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/buttonWest" name="EmptyBindIcon" />
+            </UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement>
+        </ui:VisualElement>
+        <ui:VisualElement style="height: 84px; flex-direction: row-reverse; position: absolute; left: 0; top: 0;">
+            <UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement text="abcde" total-text="Navigate the menu with controller \n &lt;icon=&quot;0&quot;&gt;&lt;icon=&quot;1&quot;&gt; or &lt;icon=&quot;2&quot;&gt; &lt;icon=&quot;3&quot;&gt;" class="bindInteractorHints" style="width: 384px; white-space: normal; flex-direction: row; height: 304px; flex-wrap: wrap; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;">
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/leftStick/x" name="ResetBindIcon" icon-search-type="Category" input-binding-category="Gamepad" default-text="Unknown Icon" />
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/leftStick/y" name="ResetBindIcon" input-binding-category="Gamepad" default-text="Unknown Icon" style="align-items: auto;" />
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/dpad/x" name="ResetBindIcon" input-binding-category="Gamepad" />
+                <UtilEssentials.InputIconBinding.VisualElements.InputBindingIconElement binding-group-name="Xbox" input-binding-path="&lt;Gamepad&gt;/dpad/y" name="ResetBindIcon" input-binding-category="Gamepad" />
+            </UtilEssentials.InputIconBinding.VisualElements.InputBindingTextWithIconsElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
