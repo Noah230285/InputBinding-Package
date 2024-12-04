@@ -8,71 +8,118 @@ namespace UtilEssentials.InputIconBinding
     [CreateAssetMenu(menuName = "Util Essentials/InputAction Binding/Button Icon Bindings")]
     public class SOButtonIconBindings : ScriptableObject
     {
-        [HideInInspector][SerializeField] List<IconBindsContainer> _iconBindsContainersList;
+        [SerializeField] List<IconBindsContainer> _iconBindsContainersList;
 
-        [Obsolete("Returns texture of icon, only use for static icons")]
-        public Texture2D GetIcon(string bindingPath, InputBindingCategories category)
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath)
+        {
+            foreach (var set in _iconBindsContainersList)
+            {
+                if (set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
+                {
+                    outIconBindData = data;
+                    return true;
+                }
+            }
+            outIconBindData = new();
+            return false;
+        }
+
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, InputBindingCategories category)
         {
             foreach (var set in _iconBindsContainersList)
             {
                 if (set.inputBindingCategory == category && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
                 {
-                    return data.texture;
+                    outIconBindData = data;
+                    return true;
                 }
             }
-            return null;
+            outIconBindData = new();
+            return false;
         }
 
-        [Obsolete("Returns texture of icon, only use for static icons")]
-        public Texture2D GetIcon(string bindingPath, string nameID)
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, string nameID)
         {
             foreach (var set in _iconBindsContainersList)
             {
                 if (set.nameID == nameID && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
                 {
-                    return data.texture;
+                    outIconBindData = data;
+                    return true;
                 }
             }
-            return null;
+            outIconBindData = new();
+            return false;
         }
 
-        [Obsolete("Returns texture of icon, only use for static icons")]
-        public Texture2D GetIcon(string bindingPath, params string[] tags)
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, params string[] tags)
         {
             foreach (var set in _iconBindsContainersList)
             {
                 if (set.HasMatchingTags(tags) && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
                 {
-                    return data.texture;
+                    outIconBindData = data;
+                    return true;
                 }
             }
-            return null;
+            outIconBindData = new();
+            return false;
         }
 
-        [Obsolete("Returns texture of icon, only use for static icons")]
-        public Texture2D GetIcon(string bindingPath, InputBindingCategories category, params string[] tags)
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, string nameID, InputBindingCategories category)
+        {
+            foreach (var set in _iconBindsContainersList)
+            {
+                if (set.nameID == nameID && set.inputBindingCategory == category && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
+                {
+                    outIconBindData = data;
+                    return true;
+                }
+            }
+            outIconBindData = new();
+            return false;
+        }
+
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, InputBindingCategories category, params string[] tags)
         {
             foreach (var set in _iconBindsContainersList)
             {
                 if (set.inputBindingCategory == category && set.HasMatchingTags(tags) && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
                 {
-                    return data.texture;
+                    outIconBindData = data;
+                    return true;
                 }
             }
-            return null;
+            outIconBindData = new();
+            return false;
         }
 
-        [Obsolete("Returns texture of icon, only use for static icons")]
-        public Texture2D GetIcon(string bindingPath, string nameID, params string[] tags)
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, string nameID, params string[] tags)
         {
             foreach (var set in _iconBindsContainersList)
             {
                 if (set.nameID == nameID && set.HasMatchingTags(tags) && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
                 {
-                    return data.texture;
+                    outIconBindData = data;
+                    return true;
                 }
             }
-            return null;
+            outIconBindData = new();
+            return false;
+        }
+
+        public bool GetIconBindData(out IconBindData outIconBindData, string bindingPath, string nameID, InputBindingCategories category, params string[] tags)
+        {
+            foreach (var set in _iconBindsContainersList)
+            {
+                if (set.nameID == nameID && set.inputBindingCategory == category && set.HasMatchingTags(tags) && set.GetIconBindDataFromBindingPath(bindingPath, out IconBindData data))
+                {
+                    outIconBindData = data;
+                    return true;
+                }
+            }
+            outIconBindData = new();
+            return false;
         }
 
 

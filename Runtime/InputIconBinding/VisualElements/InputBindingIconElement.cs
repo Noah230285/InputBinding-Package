@@ -105,6 +105,7 @@ namespace UtilEssentials.InputIconBinding.VisualElements
                 if (_inputBindingPath != value)
                 {
                     _inputBindingPath = value;
+                    UpdateIcon();
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace UtilEssentials.InputActionBinding.UIToolkit
     /// Property Drawer for the class InputActionBinder <see cref="UXMLRemmappingBinder.InputActionBinder"/>
     /// </summary>
     [CustomPropertyDrawer(typeof(InputActionBinder))]
-    internal class InputActionBinderDrawer : PropertyDrawer
+    public class InputActionBinderDrawer : PropertyDrawer
     {
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
@@ -45,7 +45,7 @@ namespace UtilEssentials.InputActionBinding.UIToolkit
         /// <summary>
         /// PopupField for choosing one of an Input Action's bindings
         /// </summary>
-        class InputBindElement : VisualElement
+        public class InputBindElement : VisualElement
         {
             SerializedProperty _actionProperty;
             SerializedProperty _bindingIdProperty;

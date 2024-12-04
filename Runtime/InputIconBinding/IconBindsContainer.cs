@@ -20,7 +20,7 @@ namespace UtilEssentials.InputIconBinding
         public InputBindingCategories inputBindingCategory => _inputBindingCategory;
 
         [SerializeField]
-        string[] _bindingPaths;
+        List<string> _bindingPaths;
 
         [SerializeField]
         bool[] _activePlatforms;
@@ -29,7 +29,7 @@ namespace UtilEssentials.InputIconBinding
         List<string> _tags;
 
         [SerializeField]
-        IconBindData[] _bindingData;
+        List<IconBindData> _bindingData;
 
         /// <summary>
         /// Returns whether the input tags are included in this IconBindsContainer
@@ -57,7 +57,7 @@ namespace UtilEssentials.InputIconBinding
         /// <returns>Whether this container contains the input binding path</returns>
         public bool GetIconBindDataFromBindingPath(string path, out IconBindData data)
         {
-            for (int i = 0; i < _bindingPaths.Length; i++)
+            for (int i = 0; i < _bindingPaths.Count; i++)
             {
                 if (_bindingPaths[i] == path)
                 {

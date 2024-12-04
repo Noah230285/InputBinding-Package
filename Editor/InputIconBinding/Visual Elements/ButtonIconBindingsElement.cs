@@ -27,7 +27,8 @@ namespace UtilEssentials.InputIconBinding.Editor
         { 
         "Keyboard.png",
         "Mouse.png",
-        "Controller.png"
+        "Controller.png",
+        "Custom.png"
         };
         internal Texture2D[] _bindingPathIcons;
 
@@ -36,6 +37,7 @@ namespace UtilEssentials.InputIconBinding.Editor
 
         // Misc child elements
         internal VisualElement _bindSetBodiesContainer;
+        internal Button _customBindAddSet;
         internal VisualElement _bindSetHeadersContainer;
         internal Button _addSetHeaderButton;
         internal Slider _bindingSizeSlider;
@@ -51,7 +53,7 @@ namespace UtilEssentials.InputIconBinding.Editor
 
         // Icon bind menu elements
         internal VisualElement _iconBindMenuElement;
-        internal Label _iconBindMenuTitleLabel;
+        internal TextField _iconBindMenuTitleLabel;
         internal TextField _iconBindMenuBindingPathTextField;
         internal EnumField _iconBindMenuIconTypeEnumField;
         internal ObjectField _iconBindMenuTextureField;
@@ -122,12 +124,17 @@ namespace UtilEssentials.InputIconBinding.Editor
             // Get misc child elements
             _addSetHeaderButton = this.Q<Button>("AddInput");
             _bindSetBodiesContainer = this.Q<VisualElement>("BindSetBody");
+
+            _customBindAddSet = this.Q<Button>("custom-add-bind-set");
             _bindSetHeadersContainer = this.Q<VisualElement>("BindSetHeadersContainer");
             _bindingSizeSlider = this.Q<Slider>("BindingSizeSlider");
             _overlayElement = this.Q<VisualElement>("Overlay");
 
             _overlayElement.style.display = DisplayStyle.Flex;
             _addSetHeaderButton.clicked += AddNewIconBindsContainerHeader;
+            
+            _customBindAddSet.clicked += AddNewBindSetForCustom;
+            _customBindAddSet.style.display = DisplayStyle.None;
 
             _bindingSizeSlider.value = 0.5f;
             _bindingSizeSlider.RegisterValueChangedCallback((x) =>
@@ -149,7 +156,7 @@ namespace UtilEssentials.InputIconBinding.Editor
 
             // Get icon bind menu elements
             _iconBindMenuElement =  this.Q<VisualElement>("IconBindMenu"); 
-            _iconBindMenuTitleLabel = _iconBindMenuElement.Q<Label>("IconBindMenuTitle");
+            _iconBindMenuTitleLabel = _iconBindMenuElement.Q<TextField>("IconBindMenuTitle");
             _iconBindMenuBindingPathTextField = _iconBindMenuElement.Q<TextField>("IconBindMenuBindingPathLabel");
             _iconBindMenuIconTypeEnumField = _iconBindMenuElement.Q<EnumField>("IconBindMenuIconType");
             _iconBindMenuTextureField = _iconBindMenuElement.Q<ObjectField>("IconBindMenuTextureField");
@@ -198,7 +205,14 @@ namespace UtilEssentials.InputIconBinding.Editor
                 iterator.Next(false);
             }
 
+            _activeBindingSOSerializedObject.ApplyModifiedProperties();
+
             _bindSetHeadersContainer.Add(new ButtonIconSetHeaderElement(this, iterator, _iconBindsContainersListProperty));
+        }
+
+        void AddNewBindSetForCustom()
+        {
+            _openMenu.AddNewCustomIconBind();
         }
 
         /// <summary>
@@ -299,6 +313,7 @@ namespace UtilEssentials.InputIconBinding.Editor
             if (layout.controls.Count == 0)
                 return false;
 
+            bindingPaths.Add(string.Join("/", pathStack.Reverse()), displayName);
             foreach (var c in layout.controls)
             {
                 pathStack.Push(c.name);

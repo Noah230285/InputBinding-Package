@@ -1,18 +1,13 @@
 {
-    "name": "UtilEssentials.InputActionBinding.Editor",
+    "name": "UtilEssentials.InputIconBinding.Monobehaviours",
     "rootNamespace": "",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:1a38a56b312436c4db3b46e8e28d7fa5",
-        "GUID:fbe916ca43ff73e448aaf76ff948a69f",
-        "GUID:478a2357cc57436488a56e564b08d223",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "GUID:157f1be2ec66bd049885e67f7a4392c8",
-        "GUID:5f81e685ecaf2294eae6e61122c8dc5b",
-        "GUID:a35117d73640c2d479d0ae5ded652fa0"
+        "GUID:59a389d33f8cfa74cbaebad51964815c"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

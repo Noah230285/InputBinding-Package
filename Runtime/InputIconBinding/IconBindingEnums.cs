@@ -17,7 +17,8 @@ namespace UtilEssentials.InputIconBinding
     {
         Keyboard = 0,
         Mouse,
-        Gamepad
+        Gamepad,
+        Custom
     }
 
     /// <summary>
@@ -25,6 +26,7 @@ namespace UtilEssentials.InputIconBinding
     /// </summary>
     public enum InputBindingSearchType
     {
+        None = -1,
         Category,
         NameID,
         Tags,

@@ -111,7 +111,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
         }
 
         /// <summary>
-        /// This first loaded, after UIDocument loading is complete
+        /// Called after UIDocument loading is complete, meaning the UXML exists
         /// </summary>
         void Loaded()
         {
@@ -135,8 +135,18 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
             _resetBindingIcon = _UIDocument.rootVisualElement.Q<InputBindingIconElement>("ResetBindIcon");
 
             InputSystem.onActionChange += ActionChanged;
-            _UIDocumentExtender.UsingGamepad += UsingGamepad;
-            _UIDocumentExtender.UsingKeyboard += UsingKeyboard;
+            PlayerInputExtender.instance.SwitchedToGamepad += UsingGamepad;
+            PlayerInputExtender.instance.SwitchedToKeyboardAndMouse += UsingKeyboard;
+
+            switch (PlayerInputExtender.instance.controlPath)
+            {
+                case "<Keyboard>":
+                    UsingKeyboard();
+                    break;
+                case "<Gamepad>":
+                    UsingGamepad();
+                    break;
+            }
         }
 
         void OnDisable()
@@ -147,8 +157,8 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
             }
 
             InputSystem.onActionChange -= ActionChanged;
-            _UIDocumentExtender.UsingGamepad -= UsingGamepad;
-            _UIDocumentExtender.UsingKeyboard -= UsingKeyboard;
+            PlayerInputExtender.instance.SwitchedToGamepad -= UsingGamepad;
+            PlayerInputExtender.instance.SwitchedToKeyboardAndMouse -= UsingKeyboard;
         }
 
         /// <summary>
@@ -173,11 +183,12 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
 
             foreach (var element in _inputActionBinders)
             {
-                var referencedAction = element.actionReference.action;
                 if (element.actionReference == null)
                 {
                     continue;
                 }
+
+                var referencedAction = element.actionReference.action;
 
                 if (referencedAction != action &&
                     referencedAction.actionMap != actionMap &&

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UtilEssentials.InputIconBinding;
 using UtilEssentials.InputIconBinding.VisualElements;
+using UtilEssentials.UIDocumentExtenderer;
 namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
 {
     /// <summary>
@@ -114,6 +115,11 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 _rootRemapper.resetBindingActionReference.action.performed -= ResetBinding;
             }
 
+            if (_button == null)
+            {
+                return;
+            }
+
             _button.UnregisterCallback<MouseEnterEvent>(MouseEnter);
             _button.UnregisterCallback<MouseLeaveEvent>(MouseLeave);
             _button.UnregisterCallback<FocusInEvent>(Selected);
@@ -212,6 +218,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
         {
             _rootRemapper.localRebind = true;
             _actionReference.action.ApplyBindingOverride(bindingIndex, "");
+            PlayerInputExtender.instance.SwitchToUIMap();
             UpdateButton();
         }
 
@@ -242,6 +249,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
             // If the base/new binding is empty, stop here
             if (newBinding.path == "")
             {
+                PlayerInputExtender.instance.SwitchToUIMap();
                 UpdateButton();
                 return;
             }
@@ -252,6 +260,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 otherBinding.actionReference.action.ApplyBindingOverride(otherBinding.bindingIndex, oldOverridePath);
                 otherBinding.UpdateButton();
             }
+            PlayerInputExtender.instance.SwitchToUIMap();
             UpdateButton();
         }
 
@@ -342,7 +351,6 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 _rootRemapper.localRebind = true;
                 SetBindingCategory();
 
-
                 UpdateButton();
 
                 // Small delay on re-enabling rebinding to prevent errors
@@ -351,6 +359,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 {
                     yield return null;
                     action.Enable();
+                    PlayerInputExtender.instance.SwitchToUIMap();
                     _rootRemapper.localRebind = false;
                 }
             };
@@ -368,7 +377,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                     cleanUp(operation);
                 });
 
-            // Find the binding path for exiting for the current control method
+            // Find the binding path for exiting in the current control method
             InputAction exitAction = _rootRemapper.exitBindingPromptActionReference.action;
             InputBinding exitBind = new();
             string exitBindName = null;
@@ -380,7 +389,7 @@ namespace UtilEssentials.InputActionBinding.UIDocumentExtenderer
                 {
                     continue;
                 }
-                if (_rootRemapper.UIDocumentExtender.controlScheme.Equals(bind.groups))
+                if (PlayerInputExtender.instance.controlScheme.Equals(bind.groups))
                 {
                     exitBind = bind;
                     exitBindName = exitAction.GetBindingDisplayString(i);

@@ -37,19 +37,22 @@ namespace UtilEssentials.InputIconBinding.Editor
         // Bound Properties
         SerializedProperty _bindingCategoryProperty;
         SerializedProperty _nameIDProperty;
-        SerializedProperty _bindingPathsArrayProperty;
-        SerializedProperty _bindingDataArrayProperty;
+        SerializedProperty _bindingPathsListProperty;
+        SerializedProperty _bindingDataListProperty;
         SerializedProperty _activePlatformsProperty;
         SerializedProperty _tagsProperty;
 
         // Stops the changing of the binding category to refresh this header
         bool _blockEnumRefresh;
+        bool _iconBindsLoaded;
 
         bool _moving;
         int _moveIndex;
         int _moveUndoGroupIndex;
 
         int _openIconBindIndex;
+
+        bool _inCustomBind => (InputBindingCategories) _bindingCategoryProperty.enumValueIndex == InputBindingCategories.Custom;
 
         // Action container, sets the size of all of this headers icon binding children when moving the size slider
         Action<float, float> _setAllBindSizes = null;
@@ -63,8 +66,8 @@ namespace UtilEssentials.InputIconBinding.Editor
 
             _bindingCategoryProperty = _iconBindsContainersListProperty.FindPropertyRelative("_inputBindingCategory");
             _nameIDProperty = _iconBindsContainersListProperty.FindPropertyRelative("_nameID");
-            _bindingPathsArrayProperty = _iconBindsContainersListProperty.FindPropertyRelative("_bindingPaths");
-            _bindingDataArrayProperty = _iconBindsContainersListProperty.FindPropertyRelative("_bindingData");
+            _bindingPathsListProperty = _iconBindsContainersListProperty.FindPropertyRelative("_bindingPaths");
+            _bindingDataListProperty = _iconBindsContainersListProperty.FindPropertyRelative("_bindingData");
             _activePlatformsProperty = _iconBindsContainersListProperty.FindPropertyRelative("_activePlatforms");
             _tagsProperty = _iconBindsContainersListProperty.FindPropertyRelative("_tags");
 
@@ -98,7 +101,7 @@ namespace UtilEssentials.InputIconBinding.Editor
 
                 int currentIndex = (int)((mousePosition.y - containerPosition.y) / headerHeight);
 
-                currentIndex = Mathf.Clamp(currentIndex, 0, _bindingPathsArrayProperty.arraySize - 1);
+                currentIndex = Mathf.Clamp(currentIndex, 0, _bindingPathsListProperty.arraySize - 1);
 
                 if (_moveIndex != currentIndex)
                 {
@@ -196,12 +199,12 @@ namespace UtilEssentials.InputIconBinding.Editor
             _enumField.BindProperty(_bindingCategoryProperty);
             _enumField.RegisterValueChangedCallback(BindHeaderMenuEnumIcon);
             _nameField.BindProperty(_nameIDProperty);
+            _icon.style.backgroundImage = _bindingsElement._bindingPathIcons[_bindingCategoryProperty.enumValueIndex];
 
             // Bind buttons
             _bodyButton.clicked += OpenHeaderMenu;
             _deleteButton.clicked += DeleteThisBindSet;
 
-            CreateIconBindElements(-1);
         }
 
         /// <summary>
@@ -211,6 +214,20 @@ namespace UtilEssentials.InputIconBinding.Editor
         {
             _bindingsElement._headerMenuElement.style.display = DisplayStyle.Flex;
             _bindingsElement._iconBindMenuElement.style.display = DisplayStyle.None;
+
+            if (!_iconBindsLoaded)
+            {
+                _iconBindsLoaded = true;
+                CreateIconBindElements(-1);
+                return;
+            }
+
+            if (_inCustomBind)
+            {
+                _bindingsElement._customBindAddSet.style.display = DisplayStyle.Flex;
+                _bindingsElement._iconBindMenuTitleLabel.isReadOnly = false;
+            }
+
 
             if (this != _bindingsElement._openMenu)
             {
@@ -259,6 +276,13 @@ namespace UtilEssentials.InputIconBinding.Editor
         {
             this.ElementAt(0).RemoveFromClassList("selected");
             _bindSetBody.style.display = DisplayStyle.None;
+
+            if (_inCustomBind)
+            {
+                _bindingsElement._customBindAddSet.style.display = DisplayStyle.None;
+                _bindingsElement._iconBindMenuTitleLabel.isReadOnly = true;
+            }
+
             _bindingsElement._openMenu = null;
 
             _updateTypeBoundIcon -= UpdateHeaderMenuIcon;
@@ -287,40 +311,67 @@ namespace UtilEssentials.InputIconBinding.Editor
         /// <param name="previousCategoryIndex">The previous index value of the category enum, is -1 if this is the first time this header element is being created</param>
         void CreateIconBindElements(int previousCategoryIndex)
         {
+
             _setAllBindSizes = null;
             int bindsIndex = _bindingCategoryProperty.enumValueIndex;
-            int bindingsCount = ButtonIconBindingsElement._bindingPathsData[bindsIndex].Length;
+
+            int bindingsCount = 0;
 
             Action clearArray = () =>
             {
                 Undo.RegisterCompleteObjectUndo(_bindingSO.targetObject, "Enum category changed");
 
-                _bindingPathsArrayProperty.ClearArray();
-                _bindingDataArrayProperty.ClearArray();
+                _bindingPathsListProperty.ClearArray();
+                _bindingDataListProperty.ClearArray();
 
-                _bindingPathsArrayProperty.arraySize = bindingsCount;
-                _bindingDataArrayProperty.arraySize = bindingsCount;
+                _bindingPathsListProperty.arraySize = bindingsCount;
+                _bindingDataListProperty.arraySize = bindingsCount;
 
                 _bindingSO.ApplyModifiedPropertiesWithoutUndo();
             };
 
-            if ((previousCategoryIndex > 0 && bindsIndex != previousCategoryIndex) || _bindingPathsArrayProperty.arraySize != bindingsCount)
+            _bindSetBody.Clear();
+
+            if (_inCustomBind)
             {
+                if (previousCategoryIndex > 0 && previousCategoryIndex != bindsIndex)
+                {
+                    clearArray();
+                }
+                _icon.style.backgroundImage = _bindingsElement._bindingPathIcons[bindsIndex];
+
+                OpenHeaderMenu();
+
+                for (int i = 0;  i < _bindingDataListProperty.arraySize;  i++)
+                {
+                    GenerateCustomIconBind(i);
+                }
+                _bindingSO.ApplyModifiedPropertiesWithoutUndo();
+
+                return;
+            }
+
+            bindingsCount = ButtonIconBindingsElement._bindingPathsData[bindsIndex].Length;
+
+            if ((previousCategoryIndex > 0 && bindsIndex != previousCategoryIndex) || _bindingPathsListProperty.arraySize != bindingsCount)
+            {
+                _icon.style.backgroundImage = _bindingsElement._bindingPathIcons[bindsIndex];
                 clearArray();
             }
-            _icon.style.backgroundImage = _bindingsElement._bindingPathIcons[bindsIndex];
 
-            SerializedProperty bindingPathsIterator = _bindingPathsArrayProperty.Copy();
-            SerializedProperty bindingDataIterator = _bindingDataArrayProperty.Copy();
+            SerializedProperty bindingPathsIterator = _bindingPathsListProperty.Copy();
+            SerializedProperty bindingDataIterator = _bindingDataListProperty.Copy();
 
             bindingPathsIterator.Next(true);
             bindingPathsIterator.Next(true);
             bindingPathsIterator.Next(false);
-            bindingDataIterator.Next(true);
-            bindingDataIterator.Next(true);
-            bindingDataIterator.Next(false);
 
-            _bindSetBody.Clear();
+            // Array
+            bindingDataIterator.Next(true);
+            // Size
+            bindingDataIterator.Next(true);
+            // Index 0
+            bindingDataIterator.Next(false);
 
 
             // Create new Icon Bind
@@ -366,6 +417,8 @@ namespace UtilEssentials.InputIconBinding.Editor
             }
 
             _bindingSO.ApplyModifiedPropertiesWithoutUndo();
+
+            OpenHeaderMenu();
         }
 
         void OpenIconBindMenu(int index, string titleText)
@@ -375,20 +428,28 @@ namespace UtilEssentials.InputIconBinding.Editor
             _bindingsElement._headerMenuElement.style.display = DisplayStyle.None;
             _bindingsElement._iconBindMenuElement.style.display = DisplayStyle.Flex;
 
-            SerializedProperty bindingPathProperty = _bindingPathsArrayProperty.GetArrayElementAtIndex(index);
-            SerializedProperty dataProperty = _bindingDataArrayProperty.GetArrayElementAtIndex(index);
+            SerializedProperty bindingPathProperty = _bindingPathsListProperty.GetArrayElementAtIndex(index);
+            SerializedProperty dataProperty = _bindingDataListProperty.GetArrayElementAtIndex(index);
             SerializedProperty typeProperty = dataProperty.FindPropertyRelative("_type");
             SerializedProperty textureProperty = dataProperty.FindPropertyRelative("_texture");
             SerializedProperty animationTimeProperty = dataProperty.FindPropertyRelative("_animationTime");
 
 
-            _bindingsElement._iconBindMenuTitleLabel.text = titleText;
+            _bindingsElement._iconBindMenuTitleLabel.value = titleText;
+            if (_inCustomBind)
+            {
+                _bindingsElement._iconBindMenuTitleLabel.isReadOnly = false;
+                _bindingsElement._iconBindMenuTitleLabel.BindProperty(bindingPathProperty);
+            }
+
             _bindingsElement._iconBindMenuBindingPathTextField.value = bindingPathProperty.stringValue;
 
             _bindingsElement._iconBindMenuIconTypeEnumField.value = (IconType)typeProperty.enumValueIndex;
             _bindingsElement._iconBindMenuIconTypeEnumField.BindProperty(typeProperty);
+
             _bindingsElement._iconBindMenuTextureField.objectType = typeof(Texture2D);
             _bindingsElement._iconBindMenuTextureField.value = textureProperty.objectReferenceValue;
+
             _bindingsElement._iconBindMenuTextureField.BindProperty(textureProperty);
             _bindingsElement._iconBindMenuAnimationTimeFloatField.BindProperty(animationTimeProperty);
 
@@ -443,13 +504,15 @@ namespace UtilEssentials.InputIconBinding.Editor
 
         void UpdateIconBindMenuIconTexture(Texture2D tex)
         {
+            _bindingsElement.STOPAnimateIconBindMenuIcon();
+
             if (tex == null)
             {
                 _bindingsElement._iconBindMenuIconElement.style.backgroundImage = null;
                 return;
             }
 
-            SerializedProperty dataProperty = _bindingDataArrayProperty.GetArrayElementAtIndex(_openIconBindIndex);
+            SerializedProperty dataProperty = _bindingDataListProperty.GetArrayElementAtIndex(_openIconBindIndex);
             SerializedProperty typeProperty = dataProperty.FindPropertyRelative("_type");
 
             string texPath = AssetDatabase.GetAssetPath(tex);
@@ -497,7 +560,6 @@ namespace UtilEssentials.InputIconBinding.Editor
                     return;
                 }
             }
-            _bindingsElement.STOPAnimateIconBindMenuIcon();
             _bindingsElement._iconBindMenuIconElement.style.backgroundImage = tex;
             _bindingSO.ApplyModifiedProperties();
         }
@@ -558,6 +620,82 @@ namespace UtilEssentials.InputIconBinding.Editor
                 }
                 iterator.Next(false);
             }
+        }
+
+        public void AddNewCustomIconBind()
+        {
+            if (!_inCustomBind)
+            {
+                _bindingsElement._customBindAddSet.style.display = DisplayStyle.None;
+                return;
+            }
+            int currentIndex = _bindingDataListProperty.arraySize;
+            //_bindingDataListProperty.arraySize = currentIndex + 1;
+
+            _bindingDataListProperty.InsertArrayElementAtIndex(currentIndex);
+
+            _bindingPathsListProperty.InsertArrayElementAtIndex(currentIndex);
+            SerializedProperty bindingPathsItem = _bindingPathsListProperty.GetArrayElementAtIndex(currentIndex);
+            bindingPathsItem.stringValue = $"Custom Icon {currentIndex}";
+
+            GenerateCustomIconBind(currentIndex);
+
+
+            OpenIconBindMenu(currentIndex, bindingPathsItem.stringValue);
+
+            _bindingSO.ApplyModifiedPropertiesWithoutUndo();
+        }
+
+        public void GenerateCustomIconBind(int index)
+        {
+            SerializedProperty bindingDataItem = _bindingDataListProperty.GetArrayElementAtIndex(index);
+            SerializedProperty bindingPathsItem = _bindingPathsListProperty.GetArrayElementAtIndex(index);
+
+            VisualElement inputBindElement = new();
+
+            _buttonIconBinderTreeAsset.CloneTree(inputBindElement);
+            ObjectField textureField = inputBindElement.Q<ObjectField>("TextureField");
+            Label pathLabel = inputBindElement.Q<Label>("Label");
+            Button selectionButton = inputBindElement.Q<Button>("SelectionButton");
+
+            inputBindElement.style.flexGrow = 0;
+            Action<float, float> setSize = (scale, font) =>
+            {
+                inputBindElement.ElementAt(0).style.width = scale;
+                inputBindElement.ElementAt(0).style.height = scale;
+
+                pathLabel.style.fontSize = font;
+            };
+            _setAllBindSizes += setSize;
+
+            string iconName = bindingPathsItem.stringValue;
+
+            string titleText = iconName;
+            pathLabel.BindProperty(bindingPathsItem);
+
+            bindingPathsItem.stringValue = titleText;
+
+            SerializedProperty textureProperty = bindingDataItem.FindPropertyRelative("_texture");
+            textureField.value = textureProperty.objectReferenceValue;
+            textureField.BindProperty(textureProperty);
+
+            _bindSetBody.Add(inputBindElement);
+
+            selectionButton.clicked += () => OpenIconBindMenu(index, titleText);
+        }
+
+            public void UpdateCustomIconBindName(ChangeEvent<string> evt)
+        {
+            _bindingsElement._iconBindMenuTitleLabel.UnregisterValueChangedCallback(UpdateCustomIconBindName);
+
+
+
+            //string titleText = evt.newValue;
+            //pathLabel.text = titleText;
+
+            //bindingPathsItem.stringValue = titleText;
+
+            //_bindingsElement._iconBindMenuTitleLabel.isReadOnly = false;
         }
     }
 }

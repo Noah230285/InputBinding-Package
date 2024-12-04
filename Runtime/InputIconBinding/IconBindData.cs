@@ -16,11 +16,11 @@ namespace UtilEssentials.InputIconBinding
     /// The data contained within an icon bind including information on the texture and animation
     /// </summary>
     [Serializable]
-    internal struct IconBindData
+    public struct IconBindData
     {
         [SerializeField]
         IconType _type;
-        IconType type => _type;
+        public IconType type => _type;
 
         [SerializeField]
         Texture2D _texture;
@@ -28,9 +28,11 @@ namespace UtilEssentials.InputIconBinding
 
         [SerializeField]
         Sprite[] _animSprites;
+        public Sprite[] animSprites => _animSprites;
 
         [SerializeField]
         float _animationTime;
+        public float animationTime => _animationTime;
 
         /// <param name="ve">The visual element for this icon to be bound to</param>
         /// <returns>Whether the binding was successful</returns>
